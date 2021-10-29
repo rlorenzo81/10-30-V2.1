@@ -68,7 +68,7 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Blue Autonomous Back", group="Pushbot")
+@Autonomous(name="Test Class", group="Pushbot")
 //@Disabled
 public class TestClass extends LinearOpMode {
 
