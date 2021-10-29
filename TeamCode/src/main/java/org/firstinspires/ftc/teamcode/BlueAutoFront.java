@@ -159,9 +159,15 @@ public class BlueAutoFront extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeRight(0.5,0.5,0.5,0.5,20,0);
+        sleep(100);
 
-        gyroDrive(0.5,0.5,0.5,0.5,4,0);
+        strafeRight(0.5,0.5,0.5,0.5,48,0);
+
+        sleep(100);
+
+        gyroDrive(0.5,0.5,0.5,0.5,10,0);
+
+        sleep(100);
 
         robot.rightLift.setPower(1);
 
@@ -183,9 +189,15 @@ public class BlueAutoFront extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,20,0);
+        sleep(100);
 
-        strafeLeft(0.5,0.5,0.5,0.5,25,0);
+        gyroReverse(0.5,0.5,0.5,0.5,30,0);
+
+        sleep(100);
+
+        strafeLeft(0.5,0.5,0.5,0.5,38,0);
+
+        sleep(100);
 
         robot.rightDrive.setPower(0.26);
 
@@ -199,7 +211,11 @@ public class BlueAutoFront extends LinearOpMode {
 
         //gyroDrive(0.5,0.5,0.5,0.5,22,0);
 
-        strafeRight(0.5,0.5,0.5,0.5,15,0);
+        sleep(100);
+
+        strafeRight(0.5,0.5,0.5,0.5,40,0);
+
+
         /*
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);

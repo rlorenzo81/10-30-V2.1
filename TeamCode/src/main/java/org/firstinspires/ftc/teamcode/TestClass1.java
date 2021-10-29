@@ -68,9 +68,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Test Class", group="Pushbot")
+@Autonomous(name="Test Class1", group="Pushbot")
 //@Disabled
-public class TestClass extends LinearOpMode {
+public class TestClass1 extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
