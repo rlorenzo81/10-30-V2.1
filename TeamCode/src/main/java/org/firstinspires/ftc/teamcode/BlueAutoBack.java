@@ -163,7 +163,7 @@ public class BlueAutoBack extends LinearOpMode {
 
         gyroDrive(0.5,0.5,0.5,0.5,4,0);
 
-        robot.leftArm();
+        robot.leftArm.setPower(-1);
 
         gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
@@ -175,7 +175,7 @@ public class BlueAutoBack extends LinearOpMode {
 
         gyroReverse(0.5,0.5,0.5,0.5,52,0);
 
-        robot.rightDrive();
+        robot.rightDrive.setPower(5);
 
         gyroDrive(0.5,0.5,0.5,0.5,20,0);
 /*
