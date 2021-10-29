@@ -68,9 +68,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Blue Autonomous Back", group="Pushbot")
+@Autonomous(name="Red Autonomous Front", group="Pushbot")
 //@Disabled
-public class BlueAutoBack extends LinearOpMode {
+public class RedAutoFront extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
@@ -159,26 +159,22 @@ public class BlueAutoBack extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeRight(0.5,0.5,0.5,0.5,10,0);
+        strafeLeft(0.5,0.5,0.5,0.5,15,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,4,0);
+        gyroDrive(0.5,0.5,0.5,0.5,10,0);
 
         robot.leftArm();
 
-        gyroReverse(0.5,0.5,0.5,0.5,4,0);
+        gyroReverse(0.5,0.5,0.5,0.5,10,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,10,0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,60,0);
-
-        strafeRight(0.5,0.5,0.5,0.5,90,0);
-
-        gyroReverse(0.5,0.5,0.5,0.5,52,0);
+        strafeRight(0.5,0.5,0.5,0.5,35,0);
 
         robot.rightDrive();
 
         gyroDrive(0.5,0.5,0.5,0.5,20,0);
-/*
+
+        strafeRight(0.5,0.5,0.5,0.5,7,0);
+        /*
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
@@ -192,14 +188,14 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
         sleep(500);
-
+*/
 
 // gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
 
        // gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
         //gyroReverse(0.5,0.5,0.5,0.5,20,0);
 
-*/
+
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
                              double distance,
