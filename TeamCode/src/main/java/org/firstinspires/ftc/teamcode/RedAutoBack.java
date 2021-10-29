@@ -159,15 +159,33 @@ public class RedAutoBack extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeRight(0.5,0.5,0.5,0.5,10,0);
+        strafeLeft(0.5,0.5,0.5,0.5,20,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,4,0);
+        gyroDrive(0.5,0.5,0.5,0.5,25,0);
+
+        robot.rightLift.setPower(1);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(2000);
+
+        robot.rightLift.setPower(0);
 
         robot.leftArm.setPower(-1);
 
-        gyroReverse(0.5,0.5,0.5,0.5,4,0);
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(1000);
 
-        strafeLeft(0.5,0.5,0.5,0.5,10,0);
+        robot.leftArm.setPower(0);
+
+        gyroReverse(0.5,0.5,0.5,0.5,20,0);
+
+        strafeRight(0.5,0.5,0.5,0.5,20,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,60,0);
 
@@ -175,7 +193,15 @@ public class RedAutoBack extends LinearOpMode {
 
         gyroReverse(0.5,0.5,0.5,0.5,52,0);
 
-        robot.rightDrive.setPower(5);
+        robot.rightDrive.setPower(0.3);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(2000);
+
+        robot.rightDrive.setPower(0);
 
         gyroDrive(0.5,0.5,0.5,0.5,20,0);
 /*

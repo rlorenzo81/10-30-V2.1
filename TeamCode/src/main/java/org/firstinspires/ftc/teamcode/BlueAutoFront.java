@@ -161,7 +161,7 @@ public class BlueAutoFront extends LinearOpMode {
 
         strafeLeft(0.5,0.5,0.5,0.5,15,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,10,0);
+        gyroDrive(0.5,0.5,0.5,0.5,8,0);
 
         robot.leftArm.setPower(-1);
 
