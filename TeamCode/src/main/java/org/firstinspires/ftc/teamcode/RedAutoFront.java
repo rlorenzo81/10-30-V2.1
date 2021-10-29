@@ -161,7 +161,7 @@ public class RedAutoFront extends LinearOpMode {
 
         strafeRight(0.5,0.5,0.5,0.5,20,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,25,0);
+        gyroDrive(0.5,0.5,0.5,0.5,27,0);
 
         robot.rightLift.setPower(1);
 
@@ -183,21 +183,21 @@ public class RedAutoFront extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,20,0);
+        gyroReverse(0.5,0.5,0.5,0.5,17,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,55,0);
+        strafeLeft(0.5,0.5,0.5,0.5,56,0);
 
-        robot.rightDrive.setPower(0.3);
+        robot.rightDrive.setPower(0.26);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(2000);
+        sleep(3000);
 
         robot.rightDrive.setPower(0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,27,0);
+        gyroDrive(0.5,0.5,0.5,0.5,22,0);
 
         strafeLeft(0.5,0.5,0.5,0.5,7,0);
         /*
