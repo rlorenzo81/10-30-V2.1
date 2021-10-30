@@ -170,7 +170,7 @@ else if(gamepad2.a){
 }
 
 if(gamepad2.left_bumper){
-    robot.rightDrive.setPower(1);
+    robot.rightDrive.setPower(0.5);
 }
 else if(gamepad2.right_bumper){
     robot.rightDrive.setPower(0);
@@ -193,8 +193,8 @@ else if(gamepad2.right_bumper){
         //right1 =gamepad2.right_stick_y;
 
 
-        robot.leftDrive.setPower(left);
-        robot.rightDrive.setPower(right);
+        robot.leftDrive.setPower(left/2);
+        robot.rightDrive.setPower(right/2);
 
 
 /*
