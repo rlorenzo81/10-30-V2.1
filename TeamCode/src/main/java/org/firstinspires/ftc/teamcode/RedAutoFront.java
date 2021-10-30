@@ -161,7 +161,7 @@ public class RedAutoFront extends LinearOpMode {
 
         gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
 
-        strafeRight(0.5,0.5,0.5,0.5,20,0);
+        strafeRight(0.5,0.5,0.5,0.5,23,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,26.5,0);
 
