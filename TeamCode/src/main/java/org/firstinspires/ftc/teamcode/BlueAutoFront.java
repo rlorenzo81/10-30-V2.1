@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -70,6 +71,7 @@ import java.util.Locale;
 
 @Autonomous(name="Blue Autonomous Front", group="Pushbot")
 //@Disabled
+
 public class BlueAutoFront extends LinearOpMode {
 
     /* Declare OpMode members. */
@@ -142,7 +144,7 @@ public class BlueAutoFront extends LinearOpMode {
 
         sleep(100); //Changing modes again requires a delay
 
-        imu.initialize(parameters);
+
         // Set up our telemetry dashboard
         composeTelemetry();
 
@@ -159,15 +161,11 @@ public class BlueAutoFront extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        sleep(100);
+        imu.initialize(parameters);
 
-        strafeRight(0.5,0.5,0.5,0.5,48,0);
+        strafeRight(0.5,0.5,0.5,0.5,50,0);
 
-        sleep(100);
-
-        gyroDrive(0.5,0.5,0.5,0.5,10,0);
-
-        sleep(100);
+        gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
         robot.rightLift.setPower(1);
 
@@ -189,15 +187,9 @@ public class BlueAutoFront extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        sleep(100);
-
         gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-        sleep(100);
-
-        strafeLeft(0.5,0.5,0.5,0.5,38,0);
-
-        sleep(100);
+        strafeLeft(0.5,0.5,0.5,0.5,30,0);
 
         robot.rightDrive.setPower(0.26);
 
@@ -209,11 +201,7 @@ public class BlueAutoFront extends LinearOpMode {
 
         robot.rightDrive.setPower(0);
 
-        //gyroDrive(0.5,0.5,0.5,0.5,22,0);
-
-        sleep(100);
-
-        strafeRight(0.5,0.5,0.5,0.5,40,0);
+        strafeRight(0.5,0.5,0.5,0.5,25,0);
 
 
         /*

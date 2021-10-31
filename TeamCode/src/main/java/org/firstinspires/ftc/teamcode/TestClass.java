@@ -159,13 +159,20 @@ public class TestClass extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeRight(0.5,0.5,0.5,0.5,90,0);
+        strafeRight(0.5,0.5,0.5,0.5,80,0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,40,0);
+        gyroReverse(0.5,0.5,0.5,0.5,50,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,40,0);
+        strafeLeft(0.5,0.5,0.5,0.5,30,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,10,0);
+        gyroDrive(0.5,0.5,0.5,0.5,7,0);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(500);
+
 
         robot.rightLift.setPower(1);
 
@@ -179,11 +186,11 @@ public class TestClass extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,40,0);
+        gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,50,0);
+        strafeLeft(0.5,0.5,0.5,0.5,30,0);
 
-        robot.rightDrive.setPower(0.26);
+        robot.rightDrive.setPower(-0.3);
 
         sleep(2000);
 
@@ -425,8 +432,8 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
                     steer *= -1.0;
 
                 leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR + (steer * .5);
-                rightSpeedF = -speedRF - (steer * .5);
+                leftSpeedR = -speedLR - (steer * .5);
+                rightSpeedF = -speedRF + (steer * .5);
                 rightSpeedR = speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
