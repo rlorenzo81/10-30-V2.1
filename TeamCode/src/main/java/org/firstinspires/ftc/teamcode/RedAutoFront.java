@@ -191,7 +191,7 @@ public class RedAutoFront extends LinearOpMode {
 
         strafeLeft(0.5,0.5,0.5,0.5,60,0);
 
-        robot.rightDrive.setPower(0.3);
+        robot.rightDrive.setPower(0.6);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
