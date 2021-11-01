@@ -68,9 +68,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Red Autonomous Front", group="Pushbot")
+@Autonomous(name="Keyla and Mike", group="Pushbot")
 //@Disabled
-public class RedAutoFront extends LinearOpMode {
+public class KeylaMike extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
@@ -92,7 +92,7 @@ public class RedAutoFront extends LinearOpMode {
     static final double DRIVE_SPEED = 0.25;     // Nominal speed for better accuracy.
     static final double TURN_SPEED = 0.5;     // Nominal half speed for better accuracy.
 
-    static final double HEADING_THRESHOLD = 1;      // As tight as we can make it with an integer gyro
+    static final double HEADING_THRESHOLD = 3;      // As tight as we can make it with an integer gyro
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable starts at 0.1
     static final double P_DRIVE_COEFF = 0.15;     // Larger is more responsive, but also less stable starts at 0.15
 
@@ -141,8 +141,6 @@ public class RedAutoFront extends LinearOpMode {
         imu.write8(BNO055IMU.Register.OPR_MODE,BNO055IMU.SensorMode.IMU.bVal & 0b1111);
 
         sleep(100); //Changing modes again requires a delay
-
-
         // Set up our telemetry dashboard
         composeTelemetry();
 
@@ -161,69 +159,14 @@ public class RedAutoFront extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        gyroDrive(0.5,0.5,0.5,0.5,0.25,0); //drive forward off wall
 
-        strafeRight(0.5,0.5,0.5,0.5,27,0);//strafe right
+        strafeRight(0.5,0.5,0.5,0.5,20,0);
+        gyroDrive(0.5,0.5,0.5,0.5,0.20,0);
+        strafeLeft(0.5,0.5,0.5,0.5,0.20,0);
+        gyroReverse(0.5,0.5,0.5,0.5,0.20,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,26.5,0); //drive forward to hub
 
-        robot.rightLift.setPower(1); //raise the intake
 
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(2000);
-
-        robot.rightLift.setPower(0);
-
-        robot.leftArm.setPower(-1); //spit out block
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(1000);
-
-        robot.leftArm.setPower(0);
-
-        gyroReverse(0.5,0.5,0.5,0.5,17,0); //go backwards
-
-        strafeLeft(0.5,0.5,0.5,0.5,59,0); //strafe left to carousel
-
-        robot.rightDrive.setPower(0.26); //turn on green wheel to move duck
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(3000);
-
-        robot.rightDrive.setPower(0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,22,0); //drive forward to get in parking spot
-
-        strafeLeft(0.5,0.5,0.5,0.5,7,0); //strafe left to be fully in parking spot
-        /*
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
-
-strafeRight(0.5,0.5,0.5,0.5,50 ,0);
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
-*/
-
-// gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-
-       // gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-        //gyroReverse(0.5,0.5,0.5,0.5,20,0);
 
 
     }
@@ -288,9 +231,9 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
             speedRR = Range.clip(Math.abs(speedRR), -1, 1.0);
 
             robot.leftFront.setPower(-speedLF);
-            robot.rightFront.setPower(-speedRF);
+            robot.rightFront.setPower(speedRF);
             robot.leftRear.setPower(speedLR);
-            robot.rightRear.setPower(speedRR);
+            robot.rightRear.setPower(-speedRR);
 
 
             // keep looping while we are still active, and BOTH motors are running.
@@ -440,8 +383,8 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
                     steer *= -1.0;
 
                 leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR + (steer * .5);
-                rightSpeedF = -speedRF - (steer * .5);
+                leftSpeedR = -speedLR -(steer * .5);
+                rightSpeedF = -speedRF + (steer * .5);
                 rightSpeedR = speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
@@ -649,404 +592,11 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
         sleep(timeToWait);
     }
 
-    public void gyroStrafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
-                                 double distance,
-                                 double angles) {
 
-        int     newLeftTargetF;
-        int     newLeftTargetR;
-        int     newRightTargetF;
-        int     newRightTargetR;
-        int     moveCounts;
-        double  max;
-        double max2;
-        double  error;
-        double  steer;
-        double  leftSpeedF;
-        double  leftSpeedR;
-        double  rightSpeedF;
-        double  rightSpeedR;
 
-        robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
-
-        // Ensure that the opmode is still active
-        if (opModeIsActive()) {
-            robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            // Determine new target position, and pass to motor controller
-            moveCounts = (int)(distance * COUNTS_PER_INCH);
-            //newLeftTargetF = robot.leftFront.getCurrentPosition() - moveCounts;
-            newRightTargetF = robot.rightFront.getCurrentPosition() + moveCounts;
-            //  newLeftTargetR = robot.leftRear.getCurrentPosition() + moveCounts;
-            //  newRightTargetR = robot.rightRear.getCurrentPosition() + moveCounts;
-
-
-
-            robot.leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.leftRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-            // start motion.
-            speedLF = Range.clip(Math.abs(speedLF), -1, 1.0);
-            speedRF = Range.clip(Math.abs(speedRF), -1, 1.0);
-            speedLR = Range.clip(Math.abs(speedLR), -1, 1.0);
-            speedRR = Range.clip(Math.abs(speedRR), -1, 1.0);
-
-            robot.leftFront.setPower(-speedLF);
-            robot.rightFront.setPower(speedRF);
-            robot.leftRear.setPower(speedLR);
-            robot.rightRear.setPower(-speedRR);
-
-
-            // keep looping while we are still active, and BOTH motors are running.
-            while (opModeIsActive() &&
-                    robot.rightFront.getCurrentPosition() < newRightTargetF ) {
-
-                // adjust relative speed based on heading error.
-                error = getError(angles);
-                steer = getSteer(error, P_DRIVE_COEFF);
-
-                // if driving in reverse, the motor correction also needs to be reversed
-                if (distance < 0)
-                    steer *= -1.0;
-
-                leftSpeedF = -speedLF - (steer*.5);
-                leftSpeedR = speedLR +(steer*.5);
-                rightSpeedF = speedRF - (steer*.5);
-                rightSpeedR= -speedRR + (steer*.5);
-
-                //leftSpeedF = -speedLF ;
-                //leftSpeedR = speedLR ;
-                // rightSpeedF = speedRF ;
-                //rightSpeedR= -speedRR ;
-
-                // Normalize speeds if either one exceeds +/- 1.0;
-                max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
-                max2 = Math.max(Math.abs(leftSpeedR), Math.abs(rightSpeedF));
-                if (max > 1.0 || max2 >1)
-                {
-                    leftSpeedF /= max;
-                    leftSpeedR /= max;
-                    rightSpeedF /= max;
-                    rightSpeedR /= max;
-
-                }
-
-
-
-                robot.leftFront.setPower(leftSpeedF);
-                robot.rightFront.setPower(rightSpeedF);
-                robot.leftRear.setPower(leftSpeedR);
-                robot.rightRear.setPower(rightSpeedR);
-
-
-            }
-
-
-
-            // Stop all motion;
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightFront.setPower(0);
-
-
-            robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-        }
-    }
-
-
-    public void gyroStrafeRight ( double speedLF,double speedRF, double speedLR, double speedRR,
-                                  double distance,
-                                  double angles) {
-
-        int     newLeftTargetF;
-        int     newLeftTargetR;
-        int     newRightTargetF;
-        int     newRightTargetR;
-        int     moveCounts;
-        double  max;
-        double max2;
-        double  error;
-        double  steer;
-        double  leftSpeedF;
-        double  leftSpeedR;
-        double  rightSpeedF;
-        double  rightSpeedR;
-
-        robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-        // Ensure that the opmode is still active
-        if (opModeIsActive()) {
-            robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            // Determine new target position, and pass to motor controller
-            moveCounts = (int)(distance * COUNTS_PER_INCH);
-            newLeftTargetF = robot.leftFront.getCurrentPosition() + moveCounts;
-            // newRightTargetF = robot.rightFront.getCurrentPosition() + moveCounts;
-            //  newLeftTargetR = robot.leftRear.getCurrentPosition() + moveCounts;
-            //  newRightTargetR = robot.rightRear.getCurrentPosition() + moveCounts;
-
-
-
-            robot.leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.leftRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-            // start motion.
-            speedLF = Range.clip(Math.abs(speedLF), -1, 1.0);
-            speedRF = Range.clip(Math.abs(speedRF), -1, 1.0);
-            speedLR = Range.clip(Math.abs(speedLR), -1, 1.0);
-            speedRR = Range.clip(Math.abs(speedRR), -1, 1.0);
-
-            robot.leftFront.setPower(speedLF);
-            robot.rightFront.setPower(-speedRF);
-            robot.leftRear.setPower(-speedLR);
-            robot.rightRear.setPower(speedRR);
-
-
-            // keep looping while we are still active, and BOTH motors are running.
-            while (opModeIsActive() &&
-                    robot.leftFront.getCurrentPosition() < newLeftTargetF ) {
-
-                // adjust relative speed based on heading error.
-                error = getError(angles);
-                steer = getSteer(error, P_DRIVE_COEFF);
-
-                // if driving in reverse, the motor correction also needs to be reversed
-                if (distance < 0)
-                    steer *= -1.0;
-
-                leftSpeedF = speedLF -(steer*.5);
-                leftSpeedR = -speedLR + (steer*.5);
-                rightSpeedF = -speedRF -(steer*.5);
-                rightSpeedR= speedRR +(steer*.5);
-
-                //leftSpeedF = speedLF ;
-                // leftSpeedR = -speedLR ;
-                // rightSpeedF = -speedRF ;
-                //rightSpeedR= speedRR ;
-
-                // Normalize speeds if either one exceeds +/- 1.0;
-                max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
-                max2 = Math.max(Math.abs(leftSpeedR), Math.abs(rightSpeedF));
-                if (max > 1.0 || max2 >1)
-                {
-                    leftSpeedF /= max;
-                    leftSpeedR /= max;
-                    rightSpeedF /= max;
-                    rightSpeedR /= max;
-
-                }
-
-
-
-                robot.leftFront.setPower(leftSpeedF);
-                robot.rightFront.setPower(rightSpeedF);
-                robot.leftRear.setPower(leftSpeedR);
-                robot.rightRear.setPower(rightSpeedR);
-
-
-            }
-
-
-
-            // Stop all motion;
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightFront.setPower(0);
-
-
-            robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-        }
-    }
-
-
-    /**
-     *  Method to drive on a fixed compass bearing (angle), based on encoder counts.
-     *  Move will stop if either of these conditions occur:
-     *  1) Move gets to the desired position
-     *  2) Driver stops the opmode running.
-     *
-     *
-     * @param distance   Distance (in inches) to move from current position.  Negative distance means move backwards.
-     * @param angles      Absolute Angle (in Degrees) relative to last gyro reset.
-     *                   0 = fwd. +ve is CCW from fwd. -ve is CW from forward.
-     *                   If a relative angle is required, add/subtract from current heading.
-     */
-    public void gyroL ( double speedLF,double speedRF, double speedLR, double speedRR,
-                        double distance,
-                        double angles) {
-
-        int     newLeftTargetF;
-        int     newLeftTargetR;
-        int     newRightTargetF;
-        int     newRightTargetR;
-        int     moveCounts;
-        double  max;
-        double max2;
-        double  error;
-        double  steer;
-        double  leftSpeedF;
-        double  leftSpeedR;
-        double  rightSpeedF;
-        double  rightSpeedR;
-
-        robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-        // Ensure that the opmode is still active
-        if (opModeIsActive()) {
-           /* robot.leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-*/
-            // Determine new target position, and pass to motor controller
-            moveCounts = (int)(distance * COUNTS_PER_INCH);
-            newLeftTargetF = robot.leftFront.getCurrentPosition() + moveCounts;
-            // newRightTargetF = robot.rightFront.getCurrentPosition() + moveCounts;
-            //  newLeftTargetR = robot.leftRear.getCurrentPosition() + moveCounts;
-            //   newRightTargetR = robot.rightRear.getCurrentPosition() + moveCounts;
-
-            // Set Target and Turn On RUN_TO_POSITION
-            //robot.leftFront.setTargetPosition(newLeftTargetF);
-            // robot.rightFront.setTargetPosition(newRightTargetF);
-            //robot.leftRear.setTargetPosition(newLeftTargetR);
-            //robot.rightRear.setTargetPosition(newRightTargetR);
-
-            robot.leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.leftRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-            // start motion.
-            speedLF = Range.clip(Math.abs(speedLF), -1, 1.0);
-            speedRF = Range.clip(Math.abs(speedRF), -1, 1.0);
-            speedLR = Range.clip(Math.abs(speedLR), -1, 1.0);
-            speedRR = Range.clip(Math.abs(speedRR), -1, 1.0);
-
-            robot.leftFront.setPower(speedLF);
-            robot.rightFront.setPower(speedRF);
-            robot.leftRear.setPower(speedLR);
-            robot.rightRear.setPower(speedRR);
-
-
-            // keep looping while we are still active, and BOTH motors are running.
-            while (opModeIsActive() &&
-                    robot.leftFront.getCurrentPosition() < newLeftTargetF ) {
-
-                // adjust relative speed based on heading error.
-                error = getError(angles);
-                steer = getSteer(error, P_DRIVE_COEFF);
-
-                // if driving in reverse, the motor correction also needs to be reversed
-                if (distance < 0)
-                    steer *= -1.0;
-
-                leftSpeedF = speedLF - (steer*.05);
-                leftSpeedR = speedLR - (steer*.05);
-                rightSpeedF = speedRF + (steer*.05);
-                rightSpeedR= speedRR + (steer*.05);
-
-                // Normalize speeds if either one exceeds +/- 1.0;
-                max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
-                max2 = Math.max(Math.abs(leftSpeedR), Math.abs(rightSpeedF));
-                if (max > 1.0 || max2 >1)
-                {
-                    leftSpeedF /= max;
-                    leftSpeedR /= max;
-                    rightSpeedF /= max;
-                    rightSpeedR /= max;
-
-                }
-
-
-
-                robot.leftFront.setPower(leftSpeedF);
-                robot.rightFront.setPower(rightSpeedF);
-                robot.leftRear.setPower(leftSpeedR);
-                robot.rightRear.setPower(rightSpeedR);
-
-                // Display drive status for the driver.
-                telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);
-                telemetry.addData("Target",  "%7d",      newLeftTargetF);
-                telemetry.addData("Actual",  "%7d:%7d",      robot.leftFront.getCurrentPosition(),
-                        robot.rightFront.getCurrentPosition());
-                telemetry.addData("Speed",   "%5.2f:%5.2f",  leftSpeedF, rightSpeedR);
-                telemetry.update();
-            }
-
-
-
-            // Stop all motion;
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightFront.setPower(0);
-            // Turn off RUN_TO_POSITION
-            /*robot.leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            */
-
-
-
-
-
-        }
-    }
 
 
     public void gyroReverse ( double speedLF,double speedRF, double speedLR, double speedRR,
@@ -1267,7 +817,7 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
         }
         else {
             steer = getSteer(error, PCoeff);
-            rightSpeed  = speed * steer*0.7;
+            rightSpeed  = speed * steer*0.5;
             leftSpeed   = -rightSpeed;
         }
 
