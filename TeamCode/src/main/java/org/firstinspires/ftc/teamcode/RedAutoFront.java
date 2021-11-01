@@ -161,13 +161,13 @@ public class RedAutoFront extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        gyroDrive(0.5,0.5,0.5,0.5,0.25,0); //drive forward off wall
+        gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
 
-        strafeRight(0.5,0.5,0.5,0.5,27,0);//strafe right
+        strafeRight(0.5,0.5,0.5,0.5,27,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,26.5,0); //drive forward to hub
+        gyroDrive(0.5,0.5,0.5,0.5,26.5,0);
 
-        robot.rightLift.setPower(1); //raise the intake
+        robot.rightLift.setPower(1);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -177,7 +177,7 @@ public class RedAutoFront extends LinearOpMode {
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(-1); //spit out block
+        robot.leftArm.setPower(-1);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -187,11 +187,11 @@ public class RedAutoFront extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,17,0); //go backwards
+        gyroReverse(0.5,0.5,0.5,0.5,17,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,59,0); //strafe left to carousel
+        strafeLeft(0.5,0.5,0.5,0.5,59,0);
 
-        robot.rightDrive.setPower(0.26); //turn on green wheel to move duck
+        robot.rightDrive.setPower(0.26);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -201,9 +201,9 @@ public class RedAutoFront extends LinearOpMode {
 
         robot.rightDrive.setPower(0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,22,0); //drive forward to get in parking spot
+        gyroDrive(0.5,0.5,0.5,0.5,22,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,7,0); //strafe left to be fully in parking spot
+        strafeLeft(0.5,0.5,0.5,0.5,7,0);
         /*
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);

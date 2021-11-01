@@ -68,9 +68,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="strafe and turn test", group="Pushbot")
+@Autonomous(name="Actual Test Class", group="Pushbot")
 //@Disabled
-public class TestClass1 extends LinearOpMode {
+public class ActualTestClass extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
@@ -92,7 +92,7 @@ public class TestClass1 extends LinearOpMode {
     static final double DRIVE_SPEED = 0.25;     // Nominal speed for better accuracy.
     static final double TURN_SPEED = 0.5;     // Nominal half speed for better accuracy.
 
-    static final double HEADING_THRESHOLD = 3;      // As tight as we can make it with an integer gyro
+    static final double HEADING_THRESHOLD = 1;      // As tight as we can make it with an integer gyro
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable starts at 0.1
     static final double P_DRIVE_COEFF = 0.15;     // Larger is more responsive, but also less stable starts at 0.15
 
@@ -141,6 +141,8 @@ public class TestClass1 extends LinearOpMode {
         imu.write8(BNO055IMU.Register.OPR_MODE,BNO055IMU.SensorMode.IMU.bVal & 0b1111);
 
         sleep(100); //Changing modes again requires a delay
+
+
         // Set up our telemetry dashboard
         composeTelemetry();
 
@@ -159,20 +161,49 @@ public class TestClass1 extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        strafeRight(0.5,0.5,0.5,0.5,80,0);
+        gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
 
-       // strafeLeft(0.5,0.5,0.5,0.5,50,0);
+        strafeLeft(0.5,0.5,0.5,0.5,25,0);
 
-       // strafeRight(.5,.5,.5,0.5,20,0);
+        gyroDrive(0.5,0.5,0.5,0.5,24.5,0);
 
+        robot.rightLift.setPower(1);
 
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(2500);
 
-        gyroTurn(-0.5,-90);
+        robot.rightLift.setPower(0);
+
+        robot.leftArm.setPower(-1);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
         sleep(1000);
 
+        robot.leftArm.setPower(0);
 
+        gyroReverse(0.5,0.5,0.5,0.5,22,0);
 
+        strafeLeft(0.5,0.5,0.5,0.5,30,0);
 
+        robot.rightDrive.setPower(-0.3);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(2000);
+
+        robot.rightDrive.setPower(0);
+
+        gyroDrive(0.5,0.5,0.5,0.5,15,0);
+
+        strafeLeft(0.5,0.5,0.5,0.5,15,0);
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
@@ -388,7 +419,7 @@ public class TestClass1 extends LinearOpMode {
                     steer *= -1.0;
 
                 leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR -(steer * .5);
+                leftSpeedR = -speedLR - (steer * .5);
                 rightSpeedF = -speedRF + (steer * .5);
                 rightSpeedR = speedRR + (steer * .5);
 
@@ -800,8 +831,8 @@ public class TestClass1 extends LinearOpMode {
                     steer *= -1.0;
 
                 leftSpeedF = speedLF -(steer*.5);
-                leftSpeedR = -speedLR - (steer*.5);
-                rightSpeedF = -speedRF +(steer*.5);
+                leftSpeedR = -speedLR + (steer*.5);
+                rightSpeedF = -speedRF -(steer*.5);
                 rightSpeedR= speedRR +(steer*.5);
 
                 //leftSpeedF = speedLF ;
@@ -1215,7 +1246,7 @@ public class TestClass1 extends LinearOpMode {
         }
         else {
             steer = getSteer(error, PCoeff);
-            rightSpeed  = speed * steer*0.5;
+            rightSpeed  = speed * steer*0.7;
             leftSpeed   = -rightSpeed;
         }
 
