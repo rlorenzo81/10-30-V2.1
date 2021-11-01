@@ -163,7 +163,7 @@ public class RedAutoBack extends LinearOpMode {
 
         gyroStrafeRight(0.5,0.5,0.5,0.5,53,0);
 
-        gyroDrive(0.5,0.5,0.5,0.5,2,0);
+        gyroDrive(0.5,0.5,0.5,0.5,4,0);
 
         robot.rightLift.setPower(-1);
 
@@ -187,7 +187,7 @@ public class RedAutoBack extends LinearOpMode {
 
         strafeLeft(0.5,0.5,0.5,0.5,53,0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,28,0);
+        gyroReverse(0.5,0.5,0.5,0.5,38,0);
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
