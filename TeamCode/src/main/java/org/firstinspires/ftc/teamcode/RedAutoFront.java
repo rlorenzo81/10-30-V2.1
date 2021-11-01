@@ -177,7 +177,7 @@ public class RedAutoFront extends LinearOpMode {
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(0.5);
+        robot.leftArm.setPower(0.8);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
