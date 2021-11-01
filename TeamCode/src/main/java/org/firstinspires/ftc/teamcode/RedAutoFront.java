@@ -142,7 +142,7 @@ public class RedAutoFront extends LinearOpMode {
 
         sleep(100); //Changing modes again requires a delay
 
-        imu.initialize(parameters);
+
         // Set up our telemetry dashboard
         composeTelemetry();
 
@@ -159,9 +159,11 @@ public class RedAutoFront extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        imu.initialize(parameters);
+
         gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
 
-        strafeRight(0.5,0.5,0.5,0.5,20,0);
+        strafeRight(0.5,0.5,0.5,0.5,27,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,26.5,0);
 
@@ -187,7 +189,7 @@ public class RedAutoFront extends LinearOpMode {
 
         gyroReverse(0.5,0.5,0.5,0.5,17,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,56,0);
+        strafeLeft(0.5,0.5,0.5,0.5,59,0);
 
         robot.rightDrive.setPower(0.26);
 

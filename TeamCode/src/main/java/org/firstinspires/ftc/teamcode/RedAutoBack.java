@@ -142,7 +142,7 @@ public class RedAutoBack extends LinearOpMode {
 
         sleep(100); //Changing modes again requires a delay
 
-        imu.initialize(parameters);
+
         // Set up our telemetry dashboard
         composeTelemetry();
 
@@ -158,6 +158,8 @@ public class RedAutoBack extends LinearOpMode {
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
+
+        imu.initialize(parameters);
 
         gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
 
@@ -184,33 +186,12 @@ public class RedAutoBack extends LinearOpMode {
         sleep(1000);
 
         robot.leftArm.setPower(0);
-        sleep(100);
 
-        gyroReverse(0.5,0.5,0.5,0.5,17,0);
+        gyroReverse(0.5,0.5,0.5,0.5,22,0);
 
-        sleep(100);
+        strafeLeft(0.5,0.5,0.5,0.5,30,0);
 
-        strafeRight(0.5,0.5,0.5,0.5,35,0);
-
-        sleep(100);
-
-        gyroDrive(0.5,0.5,0.5,0.5,63,0);
-
-        sleep(100);
-
-        strafeLeft(0.5,0.5,0.5,0.5,79,0);
-
-        sleep(100);
-
-        gyroReverse(0.5,0.5,0.5,0.5,55,0);
-
-        sleep(100);
-
-        gyroReverse(0.3,0.3,0.3,0.3,5,0);
-
-        sleep(100);
-
-        robot.rightDrive.setPower(0.3);
+        robot.rightDrive.setPower(-0.3);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -219,31 +200,11 @@ public class RedAutoBack extends LinearOpMode {
         sleep(2000);
 
         robot.rightDrive.setPower(0);
-        sleep(100);
 
-        gyroDrive(0.5,0.5,0.5,0.5,20,0);
-/*
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
+        gyroDrive(0.5,0.5,0.5,0.5,15,0);
 
-strafeRight(0.5,0.5,0.5,0.5,50 ,0);
+        strafeLeft(0.5,0.5,0.5,0.5,15,0);
 
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
-
-
-// gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-
-       // gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-        //gyroReverse(0.5,0.5,0.5,0.5,20,0);
-
-*/
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
                              double distance,
@@ -458,8 +419,8 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
                     steer *= -1.0;
 
                 leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR + (steer * .5);
-                rightSpeedF = -speedRF - (steer * .5);
+                leftSpeedR = -speedLR - (steer * .5);
+                rightSpeedF = -speedRF + (steer * .5);
                 rightSpeedR = speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
