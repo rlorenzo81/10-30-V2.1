@@ -161,11 +161,9 @@ public class RedAutoBack extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
+        gyroStrafeRight(0.5,0.5,0.5,0.5,53,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,25,0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,24.5,0);
+        gyroDrive(0.5,0.5,0.5,0.5,2,0);
 
         robot.rightLift.setPower(-1);
 
@@ -173,37 +171,23 @@ public class RedAutoBack extends LinearOpMode {
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(2500);
+        sleep(3400);
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(1);
+        robot.leftArm.setPower(0.5);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(1000);
+        sleep(1300);
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,22,0);
+        strafeLeft(0.5,0.5,0.5,0.5,53,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,30,0);
-
-        robot.rightDrive.setPower(-0.3);
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(2000);
-
-        robot.rightDrive.setPower(0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,15,0);
-
-        strafeLeft(0.5,0.5,0.5,0.5,15,0);
+        gyroReverse(0.5,0.5,0.5,0.5,28,0);
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
@@ -284,10 +268,10 @@ public class RedAutoBack extends LinearOpMode {
                 if (distance < 0)
                     steer *= -1.0;
 
-                leftSpeedF = -speedLF - (steer * .1);
-                leftSpeedR = speedLR - (steer * .1);
-                rightSpeedF = speedRF + (steer * .1);
-                rightSpeedR = -speedRR + (steer * .1);
+                leftSpeedF = -speedLF - (steer * .5);
+                leftSpeedR = speedLR - (steer * .5);
+                rightSpeedF = speedRF + (steer * .5);
+                rightSpeedR = -speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
                 max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
@@ -704,8 +688,8 @@ public class RedAutoBack extends LinearOpMode {
                     steer *= -1.0;
 
                 leftSpeedF = -speedLF - (steer*.5);
-                leftSpeedR = speedLR +(steer*.5);
-                rightSpeedF = speedRF - (steer*.5);
+                leftSpeedR = speedLR -(steer*.5);
+                rightSpeedF = speedRF + (steer*.5);
                 rightSpeedR= -speedRR + (steer*.5);
 
                 //leftSpeedF = -speedLF ;
@@ -831,8 +815,8 @@ public class RedAutoBack extends LinearOpMode {
                     steer *= -1.0;
 
                 leftSpeedF = speedLF -(steer*.5);
-                leftSpeedR = -speedLR + (steer*.5);
-                rightSpeedF = -speedRF -(steer*.5);
+                leftSpeedR = -speedLR - (steer*.5);
+                rightSpeedF = -speedRF +(steer*.5);
                 rightSpeedR= speedRR +(steer*.5);
 
                 //leftSpeedF = speedLF ;
