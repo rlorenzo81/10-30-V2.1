@@ -161,9 +161,9 @@ public class KeylaMike extends LinearOpMode {
 
 
         strafeRight(0.5,0.5,0.5,0.5,20,0);
-        gyroDrive(0.5,0.5,0.5,0.5,0.20,0);
-        strafeLeft(0.5,0.5,0.5,0.5,0.20,0);
-        gyroReverse(0.5,0.5,0.5,0.5,0.20,0);
+        gyroDrive(0.5,0.5,0.5,0.5,20,0);
+        strafeLeft(0.5,0.5,0.5,0.5,20,0);
+        gyroReverse(0.5,0.5,0.5,0.5,20,0);
 
 
 
