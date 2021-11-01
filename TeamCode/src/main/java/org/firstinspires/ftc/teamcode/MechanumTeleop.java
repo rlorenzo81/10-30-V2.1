@@ -162,7 +162,7 @@ if(gamepad2.x){
 }
 
 else if(gamepad2.b){
-    robot.leftArm.setPower(1); //intake
+    robot.leftArm.setPower(0.5); //intake
 }
 
 else if(gamepad2.a){
