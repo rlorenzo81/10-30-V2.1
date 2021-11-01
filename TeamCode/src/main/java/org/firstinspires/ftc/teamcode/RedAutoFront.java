@@ -167,7 +167,7 @@ public class RedAutoFront extends LinearOpMode {
 
         gyroDrive(0.5,0.5,0.5,0.5,26.5,0);
 
-        robot.rightLift.setPower(1);
+        robot.rightLift.setPower(-1);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -177,7 +177,7 @@ public class RedAutoFront extends LinearOpMode {
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(-1);
+        robot.leftArm.setPower(1);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);

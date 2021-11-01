@@ -174,13 +174,13 @@ public class TestClass extends LinearOpMode {
         sleep(500);
 
 
-        robot.rightLift.setPower(1);
+        robot.rightLift.setPower(-1);
 
         sleep(2500);
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(-1);
+        robot.leftArm.setPower(1);
 
         sleep(1000);
 
