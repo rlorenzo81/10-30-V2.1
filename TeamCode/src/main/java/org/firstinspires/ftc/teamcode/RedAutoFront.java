@@ -163,35 +163,35 @@ public class RedAutoFront extends LinearOpMode {
 
         gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
 
-        strafeRight(0.5,0.5,0.5,0.5,27,0);
+        strafeRight(0.5,0.5,0.5,0.5,24,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,26.5,0);
 
-        robot.rightLift.setPower(1);
+        robot.rightLift.setPower(-1);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(2000);
+        sleep(3000);
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(-1);
+        robot.leftArm.setPower(0.5);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(1000);
+        sleep(1300);
 
         robot.leftArm.setPower(0);
 
         gyroReverse(0.5,0.5,0.5,0.5,17,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,59,0);
+        strafeLeft(0.5,0.5,0.5,0.5,60,0);
 
-        robot.rightDrive.setPower(0.26);
+        robot.rightDrive.setPower(0.6);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -440,8 +440,8 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
                     steer *= -1.0;
 
                 leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR + (steer * .5);
-                rightSpeedF = -speedRF - (steer * .5);
+                leftSpeedR = -speedLR - (steer * .5);
+                rightSpeedF = -speedRF + (steer * .5);
                 rightSpeedR = speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
