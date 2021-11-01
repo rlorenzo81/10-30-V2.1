@@ -159,17 +159,13 @@ public class TestClass1 extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeRight(0.5,0.5,0.5,0.5,90,0);
-
-        gyroReverse(0.5,0.5,0.5,0.5,40,0);
-
-        strafeLeft(0.5,0.5,0.5,0.5,40,0);
+        strafeLeft(0.5,0.5,0.5,0.5,48,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,10,0);
 
         robot.rightLift.setPower(1);
 
-        sleep(2500);
+        sleep(3000);
 
         robot.rightLift.setPower(0);
 
@@ -179,37 +175,27 @@ public class TestClass1 extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,40,0);
+        gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,50,0);
+        strafeRight(0.5,0.5,0.5,0.5,38,0);
 
-        robot.rightDrive.setPower(0.26);
+        robot.rightDrive.setPower(-0.3);
+
+        sleep(700);
+
+        robot.rightDrive.setPower(-0.6);
+
+        sleep(400);
+
+        robot.rightLift.setPower(1);
 
         sleep(2000);
 
-        strafeRight(0.5,0.5,0.5,0.5,25,0);
+        robot.rightLift.setPower(0);
 
-        /*
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
+        strafeLeft(0.5,0.5,0.5,0.5,25,0);
 
-strafeRight(0.5,0.5,0.5,0.5,50 ,0);
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
-*/
-
-// gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-
-       // gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-        //gyroReverse(0.5,0.5,0.5,0.5,20,0);
-
+        gyroDrive(0.5,0.5,0.5,0.5,80,0);
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
