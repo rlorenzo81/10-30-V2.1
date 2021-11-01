@@ -440,8 +440,8 @@ strafeRight(0.5,0.5,0.5,0.5,50 ,0);
                     steer *= -1.0;
 
                 leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR + (steer * .5);
-                rightSpeedF = -speedRF - (steer * .5);
+                leftSpeedR = -speedLR - (steer * .5);
+                rightSpeedF = -speedRF + (steer * .5);
                 rightSpeedR = speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
