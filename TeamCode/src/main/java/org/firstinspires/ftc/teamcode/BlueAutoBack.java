@@ -161,7 +161,7 @@ public class BlueAutoBack extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        strafeLeft(0.5,0.5,0.5,0.5,53,0);
+        strafeLeft(0.5,0.5,0.5,0.5,50,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
@@ -185,9 +185,9 @@ public class BlueAutoBack extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        strafeRight(0.5,0.5,0.5,0.5,53,0);
+        strafeRight(0.5,0.5,0.5,0.5,55,0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,38,0);
+        gyroReverse(0.5,0.5,0.5,0.5,50,0);
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
