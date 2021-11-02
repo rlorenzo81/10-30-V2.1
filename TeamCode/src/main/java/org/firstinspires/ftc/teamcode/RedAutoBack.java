@@ -171,7 +171,7 @@ public class RedAutoBack extends LinearOpMode {
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(3600);
+        sleep(3700);
 
         robot.rightLift.setPower(0);
 

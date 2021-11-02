@@ -163,7 +163,7 @@ public class BlueAutoFront extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        strafeRight(0.5,0.5,0.5,0.5,50,0);
+        strafeRight(0.5,0.5,0.5,0.5,53,0);
 
         gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
@@ -173,25 +173,25 @@ public class BlueAutoFront extends LinearOpMode {
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(2500);
+        sleep(3700);
 
         robot.rightLift.setPower(0);
 
-        robot.leftArm.setPower(1);
+        robot.leftArm.setPower(0.5);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(1000);
+        sleep(1300);
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,30,0);
+        gyroReverse(0.5,0.5,0.5,0.5,28,0);
 
         strafeLeft(0.5,0.5,0.5,0.5,30,0);
 
-        robot.rightDrive.setPower(0.26);
+        robot.rightDrive.setPower(0.6);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
@@ -202,6 +202,8 @@ public class BlueAutoFront extends LinearOpMode {
         robot.rightDrive.setPower(0);
 
         strafeRight(0.5,0.5,0.5,0.5,25,0);
+
+        gyroReverse(0.5,0.5,0.5,0.5,3,0);
 
 
         /*

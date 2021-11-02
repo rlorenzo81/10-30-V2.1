@@ -68,7 +68,7 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="TEST CLASS", group="Pushbot")
+@Autonomous(name="Blue Auto Back", group="Pushbot")
 //@Disabled
 public class BlueAutoBack extends LinearOpMode {
 
@@ -142,7 +142,7 @@ public class BlueAutoBack extends LinearOpMode {
 
         sleep(100); //Changing modes again requires a delay
 
-        imu.initialize(parameters);
+
         // Set up our telemetry dashboard
         composeTelemetry();
 
@@ -159,47 +159,36 @@ public class BlueAutoBack extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeRight(0.5,0.5,0.5,0.5,10,0);
+        imu.initialize(parameters);
 
-        gyroDrive(0.5,0.5,0.5,0.5,4,0);
+        strafeLeft(0.5,0.5,0.5,0.5,53,0);
 
-        robot.leftArm.setPower(-1);
+        gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,4,0);
-
-        strafeLeft(0.5,0.5,0.5,0.5,10,0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,60,0);
-
-        strafeRight(0.5,0.5,0.5,0.5,90,0);
-
-        gyroReverse(0.5,0.5,0.5,0.5,52,0);
-
-        robot.rightDrive.setPower(5);
-
-        gyroDrive(0.5,0.5,0.5,0.5,20,0);
-/*
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(500);
-
-strafeRight(0.5,0.5,0.5,0.5,50 ,0);
+        robot.rightLift.setPower(-1);
 
         robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(500);
+        sleep(3700);
 
+        robot.rightLift.setPower(0);
 
-// gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
+        robot.leftArm.setPower(0.5);
 
-       // gyroStrafeRight(0.5,0.5,0.5,0.5,30,0);
-        //gyroReverse(0.5,0.5,0.5,0.5,20,0);
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(1300);
 
-*/
+        robot.leftArm.setPower(0);
+
+        strafeRight(0.5,0.5,0.5,0.5,53,0);
+
+        gyroReverse(0.5,0.5,0.5,0.5,38,0);
+
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
                              double distance,
