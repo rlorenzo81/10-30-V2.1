@@ -183,21 +183,21 @@ public class KeylaMike extends LinearOpMode {
 
         robot.leftArm.setPower(0);
 
-        gyroReverse(0.5,0.5,0.5,0.5,28,0);
+        gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-        strafeLeft(0.5,0.5,0.5,0.5,45,0);
+        strafeLeft(0.5,0.5,0.5,0.5,42,0);
 
         robot.rightDrive.setPower(-0.6);
 
-         robot.leftFront.setPower(0);
+        robot.leftFront.setPower(0);
         robot.rightFront.setPower(0);
-         robot.leftRear.setPower(0);
+        robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
         sleep(3000);
 
         robot.rightDrive.setPower(0);
 
-        strafeRight(0.5,0.5,0.5,0.5,30,0);
+        strafeRight(0.5,0.5,0.5,0.5,28,0);
 
         gyroReverse(0.5,0.5,0.5,0.5,3.5,0);
 
