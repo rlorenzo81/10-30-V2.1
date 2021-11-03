@@ -32,12 +32,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.Range;
-import com.qualcomm.robotcore.hardware.ServoControllerEx;
+
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-import com.qualcomm.robotcore.hardware.PwmControl.PwmRange;
-import com.qualcomm.robotcore.hardware.PwmControl;
 
 /**
  * This file provides basic Telop driving for a Pushbot robot.
@@ -54,9 +50,10 @@ import com.qualcomm.robotcore.hardware.PwmControl;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Drive Teleop", group="Pushbot")
+@TeleOp(name="Miguel's Special Teleop", group="Pushbot")
 //@Disabled
-public class MechanumTeleop extends OpMode{
+@Disabled
+public class TeleopButJustOneController extends OpMode{
 
     /* Declare OpMode members. */
    HardwarePushbot robot       = new HardwarePushbot(); // use the class created to define a Pushbot's hardware
@@ -149,31 +146,34 @@ public class MechanumTeleop extends OpMode{
         double lift;
         double intake;
 
-        lift = gamepad2.left_stick_y;
-        if(lift >= 0.3 ||lift <=-.3) {
-            robot.rightLift.setPower(lift);
+
+        if (gamepad1.dpad_up){
+            robot.rightLift.setPower(-1);
+        }
+        else if(gamepad1.dpad_down){
+            robot.rightLift.setPower(1);
         }
         else {
             robot.rightLift.setPower(0);
         }
 
-if(gamepad2.x){
+if(gamepad1.x){
     robot.leftArm.setPower(-1); //outtake
 }
 
-else if(gamepad2.b){
+else if(gamepad1.b){
     robot.leftArm.setPower(0.5); //intake
 }
 
-else if(gamepad2.a){
+else if(gamepad1.a){
     robot.leftArm.setPower(0);
 }
 
-if(gamepad2.left_bumper){
-    robot.rightDrive.setPower(0.5);
+if(gamepad1.left_bumper){
+    robot.rightDrive.setPower(0.6);
 }
-else if(gamepad2.right_bumper){
-    robot.rightDrive.setPower(0);
+else if(gamepad1.right_bumper){
+    robot.rightDrive.setPower(-0.6);
         }
 /*
         intake = gamepad2.left_stick_y;
@@ -186,7 +186,7 @@ else if(gamepad2.right_bumper){
 
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
-        left = gamepad2.left_stick_y;
+       /* left = gamepad2.left_stick_y;
         right = gamepad2.right_stick_y;
 
        // left1 =-gamepad2.right_stick_y;
@@ -195,7 +195,7 @@ else if(gamepad2.right_bumper){
 
         robot.leftDrive.setPower(left/2);
         robot.rightDrive.setPower(right/2);
-
+*/
 
 /*
         // Use gamepad left & right Bumpers to open and close the claw
