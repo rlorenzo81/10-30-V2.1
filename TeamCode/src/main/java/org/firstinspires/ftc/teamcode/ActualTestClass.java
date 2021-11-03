@@ -89,6 +89,12 @@ public class ActualTestClass extends LinearOpMode {
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
 
+    static final double     COUNTS_PER_MOTOR_REV_LIFT    = 1440 ;    // eg: TETRIX Motor Encoder
+    static final double     DRIVE_GEAR_REDUCTION_LIFT    = 1.0 ;     // This is < 1.0 if geared UP
+    static final double     WHEEL_DIAMETER_INCHES_LIFT   =1.5 ;     // For figuring circumference
+    static final double     COUNTS_PER_INCH_LIFT        = (COUNTS_PER_MOTOR_REV_LIFT * DRIVE_GEAR_REDUCTION_LIFT) /
+            (WHEEL_DIAMETER_INCHES_LIFT * 3.1415);
+
     // These constants define the desired driving/control characteristics
     // The can/should be tweaked to suite the specific robot drive train.
     static final double DRIVE_SPEED = 0.25;     // Nominal speed for better accuracy.
@@ -163,49 +169,7 @@ public class ActualTestClass extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        gyroDrive(0.5,0.5,0.5,0.5,0.25,0);
-
-        strafeLeft(0.5,0.5,0.5,0.5,25,0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,24.5,0);
-
-        robot.rightLift.setPower(1);
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(2500);
-
-        robot.rightLift.setPower(0);
-
-        robot.leftArm.setPower(-1);
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(1000);
-
-        robot.leftArm.setPower(0);
-
-        gyroReverse(0.5,0.5,0.5,0.5,22,0);
-
-        strafeLeft(0.5,0.5,0.5,0.5,30,0);
-
-        robot.rightDrive.setPower(-0.3);
-
-        robot.leftFront.setPower(0);
-        robot.rightFront.setPower(0);
-        robot.leftRear.setPower(0);
-        robot.rightRear.setPower(0);
-        sleep(2000);
-
-        robot.rightDrive.setPower(0);
-
-        gyroDrive(0.5,0.5,0.5,0.5,15,0);
-
-        strafeLeft(0.5,0.5,0.5,0.5,15,0);
+        encoderLift(-0.7,10,5);
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,
@@ -339,6 +303,58 @@ public class ActualTestClass extends LinearOpMode {
             robot.rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 */
 
+        }
+    }
+
+    public void encoderLift(double speed,
+                              double liftInches,
+                             double timeoutS) {
+        int newLiftTarget;
+
+
+        // Ensure that the opmode is still active
+        if (opModeIsActive()) {
+
+            // Determine new target position, and pass to motor controller
+            newLiftTarget = robot.rightLift.getCurrentPosition() + (int)(liftInches * COUNTS_PER_INCH_LIFT);
+
+            robot.rightLift.setTargetPosition(newLiftTarget);
+
+
+            // Turn On RUN_TO_POSITION
+            robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            // reset the timeout time and start motion.
+            runtime.reset();
+            robot.rightLift.setPower(Math.abs(speed));
+
+
+            // keep looping while we are still active, and there is time left, and both motors are running.
+            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+            // its target position, the motion will stop.  This is "safer" in the event that the robot will
+            // always end the motion as soon as possible.
+            // However, if you require that BOTH motors have finished their moves before the robot continues
+            // onto the next step, use (isBusy() || isBusy()) in the loop test.
+            while (opModeIsActive() &&
+                    (runtime.seconds() < timeoutS) &&
+                    (robot.rightLift.isBusy() )) {
+
+                // Display it for the driver.
+                telemetry.addData("Path1",  "Running to %7d ", newLiftTarget);
+                telemetry.addData("Path2",  "Running at %7d",
+                        robot.rightLift.getCurrentPosition());
+                telemetry.update();
+            }
+
+            // Stop all motion;
+            robot.rightLift.setPower(0);
+
+
+            // Turn off RUN_TO_POSITION
+            robot.rightLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
+            //  sleep(250);   // optional pause after each move
         }
     }
 
@@ -1185,8 +1201,6 @@ public class ActualTestClass extends LinearOpMode {
             robot.leftRear.setPower(speed);
             robot.rightRear.setPower(-speed);*/
         }
-
-
     }
 
     /**
