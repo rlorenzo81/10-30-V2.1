@@ -68,7 +68,7 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Keyla and Mike", group="Pushbot")
+@Autonomous(name="Blue Front", group="Pushbot")
 //@Disabled
 public class KeylaMike extends LinearOpMode {
 
@@ -159,32 +159,47 @@ public class KeylaMike extends LinearOpMode {
 
         imu.initialize(parameters);
 
+        strafeRight(0.5,0.5,0.5,0.5,50,0);
 
-   strafeRight(0.5,0.5,0.5,0.5,52.5,0);
-   gyroDrive(0.5,0.5,0.5,0.5,5,0);
-   robot.leftFront.setPower(0);
-   robot.rightFront.setPower(0);
-   robot.leftRear.setPower(0);
-   robot.rightRear.setPower(0);
-   sleep(4000);
+        gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
-   gyroReverse(0.5,0.5,0.5,0.5,28,0);
-   strafeLeft(0.5,0.5,0.5,0.5,45,0);
+        robot.rightLift.setPower(-1);
 
-   robot.rightDrive.setPower(-0.6);
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(3600);
 
-   robot.leftFront.setPower(0);
-   robot.rightFront.setPower(0);
-   robot.leftRear.setPower(0);
-   robot.rightRear.setPower(0);
-   sleep(3000);
+        robot.rightLift.setPower(0);
+
+        robot.leftArm.setPower(0.5);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(1000);
+
+        robot.leftArm.setPower(0);
+
+        gyroReverse(0.5,0.5,0.5,0.5,28,0);
+
+        strafeLeft(0.5,0.5,0.5,0.5,45,0);
+
+        robot.rightDrive.setPower(-0.6);
+
+         robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+         robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(3000);
+
         robot.rightDrive.setPower(0);
-        strafeRight(0.5,0.5,0.5,0.5,28,0);
+
+        strafeRight(0.5,0.5,0.5,0.5,30,0);
+
         gyroReverse(0.5,0.5,0.5,0.5,3.5,0);
-
-
-
-
 
 
     }

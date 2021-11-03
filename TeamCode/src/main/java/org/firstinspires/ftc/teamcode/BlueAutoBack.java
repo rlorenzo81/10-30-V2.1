@@ -68,7 +68,7 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Blue Auto Back", group="Pushbot")
+@Autonomous(name="Blue Back", group="Pushbot")
 //@Disabled
 public class BlueAutoBack extends LinearOpMode {
 
@@ -325,8 +325,8 @@ public class BlueAutoBack extends LinearOpMode {
     }
 
     public void strafeRight ( double speedLF,double speedRF, double speedLR, double speedRR,
-                             double distance,
-                             double angles) {
+                              double distance,
+                              double angles) {
 
         int newLeftTargetF;
         int newLeftTargetR;

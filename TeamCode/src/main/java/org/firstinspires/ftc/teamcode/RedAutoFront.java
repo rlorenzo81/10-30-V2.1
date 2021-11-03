@@ -68,7 +68,7 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Red Autonomous Front", group="Pushbot")
+@Autonomous(name="Red Front", group="Pushbot")
 //@Disabled
 public class RedAutoFront extends LinearOpMode {
 
