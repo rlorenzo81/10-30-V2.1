@@ -193,7 +193,7 @@ public class KeylaMike extends LinearOpMode {
         robot.rightFront.setPower(0);
         robot.leftRear.setPower(0);
         robot.rightRear.setPower(0);
-        sleep(3000);
+        sleep(4000);
 
         robot.rightDrive.setPower(0);
 
