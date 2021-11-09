@@ -88,7 +88,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="find duck auto test", group="Pushbot")
 //@Disabled
-@Disabled
+//@Disabled
 public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
@@ -261,15 +261,24 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
             }
         }
 
-        if(isDuckDetected && right<100){
+        if(isDuckDetected && right <= 120){
 
+            robot.rightDrive.setPower(1);
+            sleep(5000);
         }
 
-        else if (isDuckDetected && right <=150){
+        else if (isDuckDetected && right >=150){
+
+            robot.leftArm.setPower(0.5);
+            sleep(5000);
 
         }
 
         else if (!isDuckDetected){
+
+            robot.rightDrive.setPower(-0.1);
+            sleep(5000);
+
 
         }
 
