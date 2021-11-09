@@ -50,7 +50,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
  * is explained below.
  */
 @TeleOp(name = "Concept: TensorFlow Object Detection", group = "Concept")
-@Disabled
+//@Disabled
 public class ConceptTensorFlowObjectDetection extends LinearOpMode {
   /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
    * the following 4 detectable objects
@@ -63,10 +63,8 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
    *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
    *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
    */
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_DM.tflite";
     private static final String[] LABELS = {
-      "Ball",
-      "Cube",
       "Duck",
       "Marker"
     };
@@ -84,7 +82,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "ARP0mN//////AAABmXcMqq49h0n9vE1XHbK47eUX9Cct/dieBsWPAdQMUfrGC+q7wz6tprle0Bzy9DOblmDGyD3gsZOD8jMLWX7jGeXhtPfLVzvZQXcSbuf6cAe/Hmf1z1EdDJKHddZYUUBKdMDMSL/1w4OcXNxRkm3qENngGQhw/UnX/g+w/8GD4w7VmsXKaPA1mrYkeqvvk/eR3CvmTr4Q2qBcD053usBqe502+oHQr9IQHZbDnC7a728o5Fy/+3GIPYrJX9E05l3e/YSpcKoRRDBAPcmp7hLgYgPS0nuj3yT7UyeR5zzlL+ps4mM4Wvyl4P4dftoI00UMOzUOxynEkdUtlR7sbx9aTAgryTyDOsryTlZ5jVmfO29E";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia

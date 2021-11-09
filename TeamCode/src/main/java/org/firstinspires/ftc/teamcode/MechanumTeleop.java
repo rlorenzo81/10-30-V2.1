@@ -194,7 +194,7 @@ else if(gamepad2.right_bumper){
 
 
         robot.leftDrive.setPower(left/2);
-        robot.rightDrive.setPower(right/2);
+        robot.rightDrive.setPower(right/1.35);
 
 
 /*
