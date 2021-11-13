@@ -87,8 +87,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="find duck auto test", group="Pushbot")
-//@Disabled
-//@Disabled
+@Disabled
 public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";

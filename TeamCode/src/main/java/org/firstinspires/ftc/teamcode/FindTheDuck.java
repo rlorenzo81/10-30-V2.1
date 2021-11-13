@@ -58,7 +58,7 @@ import java.util.List;
  * is explained below.
  */
 @Autonomous(name = "TensorFlow Webcam", group = "Concept")
-//@Disabled
+@Disabled
 public class FindTheDuck extends LinearOpMode {
   /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
    * the following 4 detectable objects

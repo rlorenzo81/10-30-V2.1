@@ -70,7 +70,7 @@ import java.util.Locale;
  */
 
 @Autonomous(name="strafe and turn test", group="Pushbot")
-//@Disabled
+
 @Disabled
 public class CorrectedFunctions extends LinearOpMode {
 
