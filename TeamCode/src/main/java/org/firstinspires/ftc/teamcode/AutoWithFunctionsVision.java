@@ -1,4 +1,5 @@
 /* Copyright (c) 2017 FIRST. All rights reserved.
+
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted (subject to the limitations in the disclaimer below) provided that
@@ -32,38 +33,26 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.Func;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-
-import java.util.List;
-import java.util.Locale;
-
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
-
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.util.ElapsedTime;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * This file illustrates the concept of driving a path based on time.
@@ -86,10 +75,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="find duck auto test", group="Pushbot")
+@Autonomous(name="Auto Functions and Vision", group="Pushbot")
 //@Disabled
 //@Disabled
-public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
+public class AutoWithFunctionsVision extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
@@ -120,7 +109,7 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
-   // private ElapsedTime     runtime = new ElapsedTime();
+    // private ElapsedTime     runtime = new ElapsedTime();
 
     BNO055IMU imu;
 
@@ -261,24 +250,139 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
             }
         }
 
-        if(isDuckDetected && right <= 120){
+        if(isDuckDetected && right <= 201){
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+            strafeRight(0.5,0.5,0.5,0.5,52,0);
+            gyroDrive(0.5,0.5,0.5,0.5,4,0);
 
-            robot.rightDrive.setPower(1);
-            sleep(5000);
+
+            robot.rightLift.setPower(-0.5);
+
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(2000);
+            robot.rightLift.setPower(0);
+
+            robot.leftArm.setPower(0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(2000);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            robot.leftArm.setPower(0);
+
+            gyroReverse(0.5,0.5,0.5,0.5,28,0);
+            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+
+            robot.rightDrive.setPower(-0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(3000);
+
+            strafeRight(0.5,0.5,0.5,0.5,22,0);
+
         }
 
-        else if (isDuckDetected && right >=150){
+        else if (isDuckDetected && right >=201){
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+            strafeRight(0.5,0.5,0.5,0.5,52,0);
+            gyroDrive(0.5,0.5,0.5,0.5,7,0);
 
-            robot.leftArm.setPower(0.5);
-            sleep(5000);
 
+            robot.rightLift.setPower(-0.5);
+
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(5500);
+            robot.rightLift.setPower(0);
+
+            robot.leftArm.setPower(0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(2000);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            robot.leftArm.setPower(0);
+
+            gyroReverse(0.5,0.5,0.5,0.5,28,0);
+            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+
+            robot.rightDrive.setPower(-0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(3000);
+
+            strafeRight(0.5,0.5,0.5,0.5,24,0);
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
         }
 
         else if (!isDuckDetected){
 
-            robot.rightDrive.setPower(-0.1);
-            sleep(5000);
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+            strafeRight(0.5,0.5,0.5,0.5,52,0);
+            gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
+
+            robot.rightLift.setPower(-0.6);
+
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(5000);
+            robot.rightLift.setPower(0);
+
+            robot.leftArm.setPower(0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(2000);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            robot.leftArm.setPower(0);
+
+            gyroReverse(0.5,0.5,0.5,0.5,28,0);
+            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+
+            robot.rightDrive.setPower(-0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(3000);
+
+            strafeRight(0.5,0.5,0.5,0.5,22,0);
 
         }
 
@@ -422,8 +526,8 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
     }
 
     public void strafeRight ( double speedLF,double speedRF, double speedLR, double speedRR,
-                             double distance,
-                             double angles) {
+                              double distance,
+                              double angles) {
 
         int newLeftTargetF;
         int newLeftTargetR;
@@ -499,10 +603,10 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
                 if (distance < 0)
                     steer *= -1.0;
 
-                leftSpeedF = speedLF - (steer * .5);
-                leftSpeedR = -speedLR -(steer * .5);
-                rightSpeedF = -speedRF + (steer * .5);
-                rightSpeedR = speedRR + (steer * .5);
+                leftSpeedF = speedLF - (steer * .2);
+                leftSpeedR = -speedLR -(steer * .2);
+                rightSpeedF = -speedRF + (steer * .2);
+                rightSpeedR = speedRR + (steer * .2);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
                 max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
@@ -795,10 +899,10 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
                 if (distance < 0)
                     steer *= -1.0;
 
-                leftSpeedF = -speedLF + (steer*.05);
-                leftSpeedR = -speedLR + (steer*.05);
-                rightSpeedF = -speedRF - (steer*.05);
-                rightSpeedR= -speedRR - (steer*.05);
+                leftSpeedF = -speedLF - (steer*.2);
+                leftSpeedR = -speedLR - (steer*.2);
+                rightSpeedF = -speedRF + (steer*.2);
+                rightSpeedR= -speedRR +(steer*.2);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
                 max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
@@ -934,7 +1038,7 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
         }
         else {
             steer = getSteer(error, PCoeff);
-            rightSpeed  = speed * steer*0.5;
+            rightSpeed  = speed * steer*0.2;
             leftSpeed   = -rightSpeed;
         }
 
@@ -1082,7 +1186,7 @@ public class CorrectedFunctionsAndDuckHunt extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-        tfodParameters.minResultConfidence = 0.5f;
+        tfodParameters.minResultConfidence = 0.8f;
         tfodParameters.isModelTensorFlow2 = true;
         tfodParameters.inputSize = 320;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
