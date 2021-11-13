@@ -70,7 +70,7 @@ import java.util.Locale;
 
 @Autonomous(name="Blue Front", group="Pushbot")
 //@Disabled
-public class KeylaMike extends LinearOpMode {
+public class BlueFront extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
