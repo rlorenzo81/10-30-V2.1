@@ -149,12 +149,22 @@ public class MechanumTeleop extends OpMode{
         double lift;
         double intake;
 
+        double tselift;
+
         lift = gamepad2.left_stick_y;
         if(lift >= 0.3 ||lift <=-.3) {
             robot.rightLift.setPower(lift);
         }
         else {
             robot.rightLift.setPower(0);
+        }
+
+        tselift = gamepad2.left_stick_x;
+        if(tselift >= 0.3 || tselift <= 0.3) {
+            robot.leftDrive.setPower(tselift);
+        }
+        else {
+            robot.leftDrive.setPower(0);
         }
 
 if(gamepad2.x){

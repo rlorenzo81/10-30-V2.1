@@ -287,7 +287,7 @@ public class RedBackVision extends LinearOpMode {
 
             gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,54,0);
+            strafeLeft(0.5,0.5,0.5,0.5,55,0);
 
             gyroReverse(0.5,0.5,0.5,0.5,40,0);
 
@@ -330,7 +330,7 @@ public class RedBackVision extends LinearOpMode {
 
             gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,54,0);
+            strafeLeft(0.5,0.5,0.5,0.5,55,0);
 
             gyroReverse(0.5,0.5,0.5,0.5,40,0);
 
@@ -373,7 +373,7 @@ public class RedBackVision extends LinearOpMode {
 
             gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,54,0);
+            strafeLeft(0.5,0.5,0.5,0.5,55,0);
 
             gyroReverse(0.5,0.5,0.5,0.5,40,0);
         }
