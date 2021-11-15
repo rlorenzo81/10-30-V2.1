@@ -75,10 +75,10 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Blue front vision", group="Pushbot")
+@Autonomous(name="Red Back Vision", group="Pushbot")
 //@Disabled
 //@Disabled
-public class BlueFrontVision extends LinearOpMode {
+public class RedBackVision extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
@@ -251,11 +251,10 @@ public class BlueFrontVision extends LinearOpMode {
         }
 
         if(isDuckDetected && right <= 201){
+
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
             strafeRight(0.5,0.5,0.5,0.5,52,0);
-
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
 
 
             robot.rightLift.setPower(-0.5);
@@ -268,6 +267,8 @@ public class BlueFrontVision extends LinearOpMode {
             sleep(2000);
 
             robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,4,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -284,28 +285,19 @@ public class BlueFrontVision extends LinearOpMode {
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
+            gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+            strafeLeft(0.5,0.5,0.5,0.5,54,0);
 
-            robot.rightDrive.setPower(-0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(3000);
-
-            strafeRight(0.5,0.5,0.5,0.5,22,0);
+            gyroReverse(0.5,0.5,0.5,0.5,40,0);
 
         }
 
         else if (isDuckDetected && right >=201){
+
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
             strafeRight(0.5,0.5,0.5,0.5,52,0);
-
-            gyroDrive(0.5,0.5,0.5,0.5,7,0);
 
 
             robot.rightLift.setPower(-0.5);
@@ -319,6 +311,8 @@ public class BlueFrontVision extends LinearOpMode {
 
             robot.rightLift.setPower(0);
 
+            gyroDrive(0.5,0.5,0.5,0.5,4,0);
+
             robot.leftArm.setPower(0.6);
 
             robot.leftFront.setPower(0);
@@ -334,21 +328,12 @@ public class BlueFrontVision extends LinearOpMode {
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
+            gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+            strafeLeft(0.5,0.5,0.5,0.5,54,0);
 
-            robot.rightDrive.setPower(-0.6);
+            gyroReverse(0.5,0.5,0.5,0.5,40,0);
 
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(3000);
-
-            strafeRight(0.5,0.5,0.5,0.5,24,0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
         }
 
         else if (!isDuckDetected){
@@ -357,10 +342,8 @@ public class BlueFrontVision extends LinearOpMode {
 
             strafeRight(0.5,0.5,0.5,0.5,52,0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,5,0);
 
-
-            robot.rightLift.setPower(-0.6);
+            robot.rightLift.setPower(-0.5);
 
 
             robot.leftFront.setPower(0);
@@ -371,6 +354,8 @@ public class BlueFrontVision extends LinearOpMode {
 
             robot.rightLift.setPower(0);
 
+            gyroDrive(0.5,0.5,0.5,0.5,4,0);
+
             robot.leftArm.setPower(0.6);
 
             robot.leftFront.setPower(0);
@@ -386,19 +371,11 @@ public class BlueFrontVision extends LinearOpMode {
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+            gyroReverse(0.5,0.5,0.5,0.5,4,0);
 
-            robot.rightDrive.setPower(-0.6);
+            strafeLeft(0.5,0.5,0.5,0.5,54,0);
 
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(3000);
-
-            strafeRight(0.5,0.5,0.5,0.5,22,0);
-            gyroReverse(0.5,0.5,0.5,0.5,3,0);
+            gyroReverse(0.5,0.5,0.5,0.5,40,0);
         }
 
 
