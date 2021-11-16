@@ -31,7 +31,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -76,9 +75,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Auto Functions and Vision", group="Pushbot")
-@Disabled
-public class AutoWithFunctionsVision extends LinearOpMode {
+@Autonomous(name="Blue Front Vision 2", group="Pushbot")
+//@Disabled
+public class BlueFrontVision2 extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
@@ -267,8 +266,10 @@ public class AutoWithFunctionsVision extends LinearOpMode {
         }
 
         if(isDuckDetected && right <= 201){
+            //if duck is in position 1
+
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
+            strafeRight(0.5,0.5,0.5,0.5,51,0);
             gyroDrive(0.5,0.5,0.5,0.5,4,0);
 
 
@@ -296,8 +297,9 @@ public class AutoWithFunctionsVision extends LinearOpMode {
             robot.rightRear.setPower(0);
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
+            strafeLeft(0.5,0.5,0.5,0.5,30,0);
+            strafeLeft(0.5,0.5,0.5,0.5,15,-45);
 
             robot.rightDrive.setPower(-0.6);
 
@@ -307,11 +309,14 @@ public class AutoWithFunctionsVision extends LinearOpMode {
             robot.rightRear.setPower(0);
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,22,0);
+            strafeRight(0.5,0.5,0.5,0.5,26,0);
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
         }
 
         else if (isDuckDetected && right >=201){
+
+            //if duck is in position 2
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
             strafeRight(0.5,0.5,0.5,0.5,52,0);
             gyroDrive(0.5,0.5,0.5,0.5,7,0);
@@ -341,8 +346,9 @@ public class AutoWithFunctionsVision extends LinearOpMode {
             robot.rightRear.setPower(0);
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
+            strafeLeft(0.5,0.5,0.5,0.5,30,0);
+            strafeLeft(0.5,0.5,0.5,0.5,15,-45);
 
             robot.rightDrive.setPower(-0.6);
 
@@ -357,6 +363,8 @@ public class AutoWithFunctionsVision extends LinearOpMode {
         }
 
         else if (!isDuckDetected){
+
+            //duck is in position 3
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
             strafeRight(0.5,0.5,0.5,0.5,52,0);
@@ -387,9 +395,9 @@ public class AutoWithFunctionsVision extends LinearOpMode {
             robot.rightRear.setPower(0);
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
-
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
+            strafeLeft(0.5,0.5,0.5,0.5,30,0);
+            strafeLeft(0.5,0.5,0.5,0.5,15,-45);
             robot.rightDrive.setPower(-0.6);
 
             robot.leftFront.setPower(0);

@@ -155,6 +155,7 @@ public class MechanumTeleop extends OpMode{
         if(lift >= 0.3 ||lift <=-.3) {
             robot.rightLift.setPower(lift);
         }
+
         else {
             robot.rightLift.setPower(0);
         }
@@ -203,7 +204,7 @@ else if(gamepad2.right_bumper){
         //right1 =gamepad2.right_stick_y;
 
 
-        robot.leftDrive.setPower(left/2);
+       // robot.leftDrive.setPower(left/2);
         robot.rightDrive.setPower(right/1.35);
 
 
@@ -222,14 +223,14 @@ else if(gamepad2.right_bumper){
             robot.intakeFlip.setPosition(0.7);
         }
 */
-        if(gamepad2.left_bumper){
-            robot.rightClaw.setPosition(0.4);
-            robot.leftClaw.setPosition(0.6);
+        if(gamepad2.left_trigger==1){
+            //robot.rightClaw.setPosition(0.4);
+            robot.leftClaw.setPosition(0.2);
         }//left bumper opens claw
 
-        else if (gamepad2.right_bumper){
-            robot.rightClaw.setPosition(0.1);
-            robot.leftClaw.setPosition(0.9);
+        else if (gamepad2.right_trigger==1){
+          //  robot.rightClaw.setPosition(0.1);
+            robot.leftClaw.setPosition(0.8);
 
         } //right bumper closes claw
 
