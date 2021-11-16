@@ -161,7 +161,7 @@ public class MechanumTeleop extends OpMode{
         }
 
         tselift = gamepad2.left_stick_x;
-        if(tselift >= 0.3 || tselift <= 0.3) {
+        if(tselift >= 0.3 || tselift <= -0.3) {
             robot.leftDrive.setPower(tselift);
         }
         else {
