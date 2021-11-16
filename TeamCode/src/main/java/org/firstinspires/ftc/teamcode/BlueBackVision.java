@@ -31,7 +31,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -75,10 +74,10 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Red Front Vision", group="Pushbot")
+@Autonomous(name="Blue Back Vision", group="Pushbot")
 //@Disabled
 //@Disabled
-public class RedFrontVision extends LinearOpMode {
+public class BlueBackVision extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
@@ -299,20 +298,7 @@ robot.leftClaw.setPosition(0.25);
 
             strafeRight(0.5,0.5,0.5,0.5,40,0);
 
-            strafeRight(0.3,0.3,0.3,0.3,6,0);
-
-            strafeRight(0,0,0,0,0,0);
-
-
-            robot.rightDrive.setPower(0.6);
-
-            sleep(2500);
-
-            strafeLeft(0.5,0.5,0.5,0.5,28.5,0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,3,0);
-
-
+           gyroReverse(1,1,1,1,40,0);
         }
 
         else if (isDuckDetected && right >=201){
@@ -355,21 +341,7 @@ robot.leftClaw.setPosition(0.25);
 
             strafeRight(0.5,0.5,0.5,0.5,40,0);
 
-            strafeRight(0.3,0.3,0.3,0.3,6,0);
-
-            strafeRight(0,0,0,0,0,0);
-
-
-            robot.rightDrive.setPower(0.6);
-
-            sleep(2500);
-
-            strafeLeft(0.5,0.5,0.5,0.5,28.5,0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,3,0);
-
-            //gyroDrive(1,1,1,1,60,0);
-
+            gyroReverse(1,1,1,1,40,0);
         }
 
         else if (!isDuckDetected){
@@ -390,9 +362,9 @@ robot.leftClaw.setPosition(0.25);
 
             robot.rightLift.setPower(0);
 
-            sleep(1000);
-
             gyroDrive(0.5,0.5,0.5,0.5,6,0);
+
+            sleep(1000);
 
             robot.leftArm.setPower(0.5);
 
@@ -409,25 +381,10 @@ robot.leftClaw.setPosition(0.25);
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
             strafeRight(0.5,0.5,0.5,0.5,40,0);
 
-            strafeRight(0.3,0.3,0.3,0.3,6,0);
-
-            strafeRight(0,0,0,0,0,0);
-
-
-            robot.rightDrive.setPower(0.6);
-
-            sleep(2500);
-
-            strafeLeft(0.5,0.5,0.5,0.5,28.5,0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,3,0);
-
-          //  gyroDrive(1,1,1,1,60,0);
-
+            gyroReverse(1,1,1,1,40,0);
         }
 
 
