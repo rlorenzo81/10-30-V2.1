@@ -901,7 +901,7 @@ robot.leftClaw.setPosition(0.25);
             robot.rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-            // Determine new target position, and pass to motor controller
+            // Determine new target position, and pstrafelefass to motor controller
             moveCounts = (int)(distance * COUNTS_PER_INCH);
             newLeftTargetF = robot.leftFront.getCurrentPosition() - moveCounts;
             // newRightTargetF = robot.rightFront.getCurrentPosition() + moveCounts;
