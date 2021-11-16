@@ -75,10 +75,10 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Red Back Vision", group="Pushbot")
+@Autonomous(name="Red Front Vision", group="Pushbot")
 //@Disabled
 //@Disabled
-public class RedBackVision extends LinearOpMode {
+public class RedFrontVision extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
@@ -256,11 +256,9 @@ public class RedBackVision extends LinearOpMode {
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-
+            strafeLeft(0.5,0.5,0.5,0.5,49,0);
 
             robot.rightLift.setPower(-0.5);
-
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
@@ -270,7 +268,7 @@ public class RedBackVision extends LinearOpMode {
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -287,11 +285,18 @@ public class RedBackVision extends LinearOpMode {
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,4,0);
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+            strafeRight(0.5,0.5,0.5,0.5,44,0);
 
-            gyroReverse(1,1,1,1,40,0);
+            robot.rightDrive.setPower(0.6);
+
+            sleep(2500);
+
+            strafeLeft(0.5,0.5,0.5,0.5,25,0);
+
+            gyroDrive(1,1,1,1,60,0);
+
 
         }
 
@@ -301,21 +306,19 @@ public class RedBackVision extends LinearOpMode {
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-
+            strafeLeft(0.5,0.5,0.5,0.5,49,0);
 
             robot.rightLift.setPower(-0.5);
-
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
-            sleep(5500);
+            sleep(2000);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -332,11 +335,17 @@ public class RedBackVision extends LinearOpMode {
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,4,0);
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+            strafeRight(0.5,0.5,0.5,0.5,44,0);
 
-            gyroReverse(1,1,1,1,40,0);
+            robot.rightDrive.setPower(0.6);
+
+            sleep(2500);
+
+            strafeLeft(0.5,0.5,0.5,0.5,25,0);
+
+            gyroDrive(1,1,1,1,60,0);
 
         }
 
@@ -346,21 +355,19 @@ public class RedBackVision extends LinearOpMode {
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
-            strafeRight(0.5,0.5,0.5,0.5,49,0);
-
+            strafeLeft(0.5,0.5,0.5,0.5,49,0);
 
             robot.rightLift.setPower(-0.5);
-
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
-            sleep(7200);
+            sleep(2000);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,7,0);
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -377,11 +384,17 @@ public class RedBackVision extends LinearOpMode {
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,4,0);
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+            strafeRight(0.5,0.5,0.5,0.5,44,0);
 
-            gyroReverse(1,1,1,1,40,0);
+            robot.rightDrive.setPower(0.6);
+
+            sleep(2500);
+
+            strafeLeft(0.5,0.5,0.5,0.5,25,0);
+
+            gyroDrive(1,1,1,1,60,0);
 
         }
 
