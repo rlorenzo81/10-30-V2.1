@@ -1,5 +1,4 @@
 /* Copyright (c) 2017 FIRST. All rights reserved.
-
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted (subject to the limitations in the disclaimer below) provided that
@@ -31,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -55,6 +55,16 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import java.util.List;
 import java.util.Locale;
 
+import com.qualcomm.hardware.lynx.LynxModule;
+
+
+
+
+
+
+
+
+
 /**
  * This file illustrates the concept of driving a path based on time.
  * It uses the common Pushbot hardware class to define the drive on the robot.
@@ -76,9 +86,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Auto Functions and Vision", group="Pushbot")
-@Disabled
-public class AutoWithFunctionsVision extends LinearOpMode {
+@Autonomous(name="Turn Test", group="Pushbot")
+//@Disabled
+public class TurnTest extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
@@ -109,9 +119,10 @@ public class AutoWithFunctionsVision extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
-    // private ElapsedTime     runtime = new ElapsedTime();
+   // private ElapsedTime     runtime = new ElapsedTime();
 
-    BNO055IMU imu;
+   // BNO055IMU imu;
+    private BNO055IMU imu;
 
     Orientation angles;
     Acceleration gravity;
@@ -127,7 +138,7 @@ public class AutoWithFunctionsVision extends LinearOpMode {
     static final double DRIVE_SPEED = 0.25;     // Nominal speed for better accuracy.
     static final double TURN_SPEED = 0.5;     // Nominal half speed for better accuracy.
 
-    static final double HEADING_THRESHOLD = 3;      // As tight as we can make it with an integer gyro
+    static final double HEADING_THRESHOLD = 1;      // As tight as we can make it with an integer gyro
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable starts at 0.1
     static final double P_DRIVE_COEFF = 0.15;     // Larger is more responsive, but also less stable starts at 0.15
 
@@ -178,21 +189,21 @@ public class AutoWithFunctionsVision extends LinearOpMode {
 
         // TODO: if your hub is mounted vertically, remap the IMU axes so that the z-axis points
         // upward (normal to the floor) using a command like the following:
-        // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
+       // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
 
         imu.initialize(parameters);
 
-      /*  BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        parameters.loggingEnabled = true;
-        parameters.loggingTag = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+       // BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+       // parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+       // parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+      //  parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+        //parameters.loggingEnabled = true;
+       // parameters.loggingTag = "IMU";
+       // parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-
-        //byte AXIS_MAP_CONFIG_BYTE = 0b000110; // to swap x and z axes
+      //  imu = hardwareMap.get(BNO055IMU.class, "imu");
+/*
+      //byte AXIS_MAP_CONFIG_BYTE = 0b000110; // to swap x and z axes
         byte AXIS_MAP_CONFIG_BYTE = 0b011000; //to swap y and z
 
         byte AXIS_MAP_SIGN_BYTE = 0x1; //This is what to write to the AXIS_MAP_SIGN register to negate the z axis
@@ -214,7 +225,7 @@ public class AutoWithFunctionsVision extends LinearOpMode {
         sleep(100); //Changing modes again requires a delay
         // Set up our telemetry dashboard
 
-       */
+*/
         composeTelemetry();
 
         robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -232,178 +243,17 @@ public class AutoWithFunctionsVision extends LinearOpMode {
 
         imu.initialize(parameters);
 
-        runtime.reset();
-        while (opModeIsActive()&& runtime.seconds()<5){
-            if (tfod != null) {
-                // getUpdatedRecognitions() will return null if no new information is available since
-                // the last time that call was made.
-                List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
-                if (updatedRecognitions != null) {
-                    telemetry.addData("# Object Detected", updatedRecognitions.size());
 
-                    // step through the list of recognitions and display boundary info.
-                    int i = 0;
-                    //  ** ADDED **
-                    for (Recognition recognition : updatedRecognitions) {
-                        telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
-                        telemetry.addData(String.format("  left,top (%d)", i), "%.03f , %.03f",
-                                recognition.getLeft(), recognition.getTop());
-                        telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
-                                recognition.getRight(), recognition.getBottom());
-                        i++;
+        //gyroHold(0.5,45,5 ); // +ve speed, +ve angle turns left
+       // gyroHold(0.5,-45,5);//+ve speed, -ve angle turns right
+        strafeLeft(0.5,0.5,0.5,0.5, 10, 0);
+          strafeLeft(0.5,0.5,0.5,0.5,30,55);
 
-                        // check label to see if the camera now sees a Duck         ** ADDED **
-                        if (recognition.getLabel().equals("Duck")) {            //  ** ADDED **
-                            isDuckDetected = true;//  ** ADDED **
-                            right=recognition.getLeft();
-                            telemetry.addData("Object Detected", "Duck");      //  ** ADDED **
-                        } else {                                               //  ** ADDED **
-                            isDuckDetected = false;                            //  ** ADDED **
-                        }                                                      //  ** ADDED **
-                    }
-                    telemetry.update();
-                }
-            }
-        }
-
-        if(isDuckDetected && right <= 201){
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
-
-
-            robot.rightLift.setPower(-0.5);
-
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-            robot.rightLift.setPower(0);
-
-            robot.leftArm.setPower(0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            robot.leftArm.setPower(0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
-
-            robot.rightDrive.setPower(-0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(3000);
-
-            strafeRight(0.5,0.5,0.5,0.5,22,0);
-
-        }
-
-        else if (isDuckDetected && right >=201){
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-            gyroDrive(0.5,0.5,0.5,0.5,7,0);
-
-
-            robot.rightLift.setPower(-0.5);
-
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(5500);
-            robot.rightLift.setPower(0);
-
-            robot.leftArm.setPower(0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            robot.leftArm.setPower(0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
-
-            robot.rightDrive.setPower(-0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(3000);
-
-            strafeRight(0.5,0.5,0.5,0.5,24,0);
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-        }
-
-        else if (!isDuckDetected){
-
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-            gyroDrive(0.5,0.5,0.5,0.5,5,0);
-
-
-            robot.rightLift.setPower(-0.6);
-
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(5000);
-            robot.rightLift.setPower(0);
-
-            robot.leftArm.setPower(0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            robot.leftArm.setPower(0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,28,0);
-            strafeLeft(0.5,0.5,0.5,0.5,46,0);
-
-            robot.rightDrive.setPower(-0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(3000);
-
-            strafeRight(0.5,0.5,0.5,0.5,22,0);
-
-        }
-
-
-
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(500);
 
 
     }
@@ -542,8 +392,8 @@ public class AutoWithFunctionsVision extends LinearOpMode {
     }
 
     public void strafeRight ( double speedLF,double speedRF, double speedLR, double speedRR,
-                              double distance,
-                              double angles) {
+                             double distance,
+                             double angles) {
 
         int newLeftTargetF;
         int newLeftTargetR;
@@ -619,10 +469,10 @@ public class AutoWithFunctionsVision extends LinearOpMode {
                 if (distance < 0)
                     steer *= -1.0;
 
-                leftSpeedF = speedLF - (steer * .2);
-                leftSpeedR = -speedLR -(steer * .2);
-                rightSpeedF = -speedRF + (steer * .2);
-                rightSpeedR = speedRR + (steer * .2);
+                leftSpeedF = speedLF - (steer * .5);
+                leftSpeedR = -speedLR -(steer * .5);
+                rightSpeedF = -speedRF + (steer * .5);
+                rightSpeedR = speedRR + (steer * .5);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
                 max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
@@ -915,10 +765,10 @@ public class AutoWithFunctionsVision extends LinearOpMode {
                 if (distance < 0)
                     steer *= -1.0;
 
-                leftSpeedF = -speedLF - (steer*.2);
-                leftSpeedR = -speedLR - (steer*.2);
-                rightSpeedF = -speedRF + (steer*.2);
-                rightSpeedR= -speedRR +(steer*.2);
+                leftSpeedF = -speedLF + (steer*.05);
+                leftSpeedR = -speedLR + (steer*.05);
+                rightSpeedF = -speedRF - (steer*.05);
+                rightSpeedR= -speedRR - (steer*.05);
 
                 // Normalize speeds if either one exceeds +/- 1.0;
                 max = Math.max(Math.abs(leftSpeedF), Math.abs(rightSpeedR));
@@ -1054,7 +904,7 @@ public class AutoWithFunctionsVision extends LinearOpMode {
         }
         else {
             steer = getSteer(error, PCoeff);
-            rightSpeed  = speed * steer*0.2;
+            rightSpeed  = speed * steer*0.6;
             leftSpeed   = -rightSpeed;
         }
 
@@ -1202,7 +1052,7 @@ public class AutoWithFunctionsVision extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-        tfodParameters.minResultConfidence = 0.8f;
+        tfodParameters.minResultConfidence = 0.5f;
         tfodParameters.isModelTensorFlow2 = true;
         tfodParameters.inputSize = 320;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
