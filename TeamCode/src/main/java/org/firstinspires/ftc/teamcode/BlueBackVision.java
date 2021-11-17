@@ -267,6 +267,7 @@ robot.leftClaw.setPosition(0.25);
             strafeLeft(0.5,0.5,0.5,0.5,51,0);
             gyroDrive(0,0,0,0,0,0);
 
+            runtime.reset();
             while(opModeIsActive()&&runtime.seconds()<5.5) {
     robot.rightLift.setPower(-0.5);
 
