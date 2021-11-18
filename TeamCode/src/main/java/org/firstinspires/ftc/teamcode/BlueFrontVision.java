@@ -250,16 +250,11 @@ public class BlueFrontVision extends LinearOpMode {
             }
         }
 
-        if(isDuckDetected && right <= 201){
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+        if(isDuckDetected && right <= 223){
 
             strafeRight(0.5,0.5,0.5,0.5,52,0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
-
-
             robot.rightLift.setPower(-0.5);
-
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
@@ -268,6 +263,8 @@ public class BlueFrontVision extends LinearOpMode {
             sleep(2000);
 
             robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -300,7 +297,7 @@ public class BlueFrontVision extends LinearOpMode {
 
         }
 
-        else if (isDuckDetected && right >=201){
+        else if (isDuckDetected && right >=223){
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
             strafeRight(0.5,0.5,0.5,0.5,52,0);

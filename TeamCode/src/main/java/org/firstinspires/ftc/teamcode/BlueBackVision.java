@@ -157,7 +157,7 @@ public class BlueBackVision extends LinearOpMode {
             // to artificially zoom in to the center of image.  For best results, the "aspectRatio" argument
             // should be set to the value of the images used to create the TensorFlow Object Detection model
             // (typically 16/9).
-            tfod.setZoom(1.0, 16.0/9.0);
+            tfod.setZoom(1.0, 16.0 / 9.0);
         }
 
 
@@ -170,7 +170,7 @@ public class BlueBackVision extends LinearOpMode {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
 
-        angles  = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         gravity = imu.getGravity();
 
 /*
@@ -216,16 +216,18 @@ public class BlueBackVision extends LinearOpMode {
 
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Ready to run");    //
+
+
+        //
         telemetry.update();
-robot.leftClaw.setPosition(0.25);
+        robot.leftClaw.setPosition(0.25);
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
         imu.initialize(parameters);
 
         runtime.reset();
-        while (opModeIsActive()&& runtime.seconds()<5){
+        while (opModeIsActive() && runtime.seconds() < 5) {
             if (tfod != null) {
                 // getUpdatedRecognitions() will return null if no new information is available since
                 // the last time that call was made.
@@ -247,7 +249,7 @@ robot.leftClaw.setPosition(0.25);
                         // check label to see if the camera now sees a Duck         ** ADDED **
                         if (recognition.getLabel().equals("Duck")) {            //  ** ADDED **
                             isDuckDetected = true;//  ** ADDED **
-                            right=recognition.getLeft();
+                            right = recognition.getLeft();
                             telemetry.addData("Object Detected", "Duck");      //  ** ADDED **
                         } else {                                               //  ** ADDED **
                             isDuckDetected = false;                            //  ** ADDED **
@@ -258,34 +260,42 @@ robot.leftClaw.setPosition(0.25);
             }
         }
 
-        if(isDuckDetected && right <= 201){
+        tfod.shutdown();
+
+        if (isDuckDetected && right >= 325) {
 
             robot.leftClaw.setPosition(0.25);
 
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+            gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,51,0);
-            gyroDrive(0,0,0,0,0,0);
+            strafeLeft(0.5, 0.5, 0.5, 0.5, 41, 0);
+
+            strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
+
+
+            gyroDrive(0, 0, 0, 0, 0, 0);
 
             runtime.reset();
-            while(opModeIsActive()&&runtime.seconds()<5.5) {
-    robot.rightLift.setPower(-0.5);
+            while (opModeIsActive() && runtime.seconds() < 8.5) {
+                robot.rightLift.setPower(-0.5);
 
 
-}
+            }
 
             robot.rightLift.setPower(0);
-sleep(100);
+            sleep(100);
 
-            gyroDrive(0,0,0,0,0,0);
+            gyroDrive(0, 0, 0, 0, 0, 0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0.5, 0.5, 0.5, 0.5, 3, 0);
 
-            gyroDrive(0,0,0,0,0,0);
+            gyroDrive(0.2, 0.2, 0.2, 0.2, 6, 0);
+
+            gyroDrive(0, 0, 0, 0, 0, 0);
 
             sleep(1000);
 
-            robot.leftArm.setPower(0.5);
+            robot.leftArm.setPower(0.7);
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
@@ -293,34 +303,45 @@ sleep(100);
             robot.rightRear.setPower(0);
             sleep(2000);
 
-            strafeRight(0.5,0.5,0.5,0.5,40,0);
+            strafeRight(0.5, 0.5, 0.5, 0.5, 40, 0);
 
-           gyroReverse(1,1,1,1,40,0);
-        }
+            gyroReverse(1, 1, 1, 1, 60, 0);
 
-        else if (isDuckDetected && right >=201){
+
+        } else if (isDuckDetected && right <= 325) {
 
             robot.leftClaw.setPosition(0.25);
 
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+            gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,51,0);
+            strafeLeft(0.5, 0.5, 0.5, 0.5, 41, 0);
 
-            robot.rightLift.setPower(-0.5);
+            strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
 
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(7200);
+
+            gyroDrive(0, 0, 0, 0, 0, 0);
+
+            runtime.reset();
+            while (opModeIsActive() && runtime.seconds() < 6.5) {
+                robot.rightLift.setPower(-0.5);
+
+
+            }
 
             robot.rightLift.setPower(0);
+            sleep(100);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0, 0, 0, 0, 0, 0);
+
+            gyroDrive(0.5, 0.5, 0.5, 0.5, 3, 0);
+
+            gyroDrive(0.2, 0.2, 0.2, 0.2, 6, 0);
+
+            gyroDrive(0, 0, 0, 0, 0, 0);
 
             sleep(1000);
 
-            robot.leftArm.setPower(0.5);
+            robot.leftArm.setPower(0.7);
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
@@ -328,65 +349,57 @@ sleep(100);
             robot.rightRear.setPower(0);
             sleep(2000);
 
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
+            strafeRight(0.5, 0.5, 0.5, 0.5, 40, 0);
 
-            robot.leftArm.setPower(0);
-
-
-            strafeRight(0.5,0.5,0.5,0.5,40,0);
-
-            gyroReverse(1,1,1,1,40,0);
+            gyroReverse(1, 1, 1, 1, 60, 0);
         }
 
-        else if (!isDuckDetected){
+        else if(!isDuckDetected){
 
-            robot.leftClaw.setPosition(0.25);
+        robot.leftClaw.setPosition(0.25);
 
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+        gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
-            strafeLeft(0.5,0.5,0.5,0.5,51,0);
+        strafeLeft(0.5, 0.5, 0.5, 0.5, 41, 0);
 
+        strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
+
+
+        gyroDrive(0, 0, 0, 0, 0, 0);
+
+        runtime.reset();
+        while (opModeIsActive() && runtime.seconds() < 3) {
             robot.rightLift.setPower(-0.5);
 
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
 
-            robot.rightLift.setPower(0);
-
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
-
-            sleep(1000);
-
-            robot.leftArm.setPower(0.5);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-
-            robot.leftArm.setPower(0);
-
-
-            strafeRight(0.5,0.5,0.5,0.5,40,0);
-
-            gyroReverse(1,1,1,1,40,0);
         }
 
+        robot.rightLift.setPower(0);
+        sleep(100);
 
+        gyroDrive(0, 0, 0, 0, 0, 0);
 
+        gyroDrive(0.5, 0.5, 0.5, 0.5, 3, 0);
 
+        gyroDrive(0.2, 0.2, 0.2, 0.2, 2, 0);
+
+        gyroDrive(0, 0, 0, 0, 0, 0);
+
+        sleep(1000);
+
+        robot.leftArm.setPower(0.7);
+
+        robot.leftFront.setPower(0);
+        robot.rightFront.setPower(0);
+        robot.leftRear.setPower(0);
+        robot.rightRear.setPower(0);
+        sleep(2000);
+
+        strafeRight(0.5, 0.5, 0.5, 0.5, 40, 0);
+
+        gyroReverse(1, 1, 1, 1, 80, 0);
+
+    }
 
     }
     public void strafeLeft ( double speedLF,double speedRF, double speedLR, double speedRR,

@@ -250,7 +250,7 @@ public class RedBackVision extends LinearOpMode {
             }
         }
 
-        if(isDuckDetected && right <= 201){
+        if(isDuckDetected && right <= 223){
 
             robot.leftClaw.setPosition(0.25);
 
@@ -267,96 +267,6 @@ public class RedBackVision extends LinearOpMode {
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
             sleep(2000);
-
-            robot.rightLift.setPower(0);
-
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
-
-            robot.leftArm.setPower(0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-
-            robot.leftArm.setPower(0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,4,0);
-
-            strafeLeft(0.5,0.5,0.5,0.5,40,0);
-
-            gyroReverse(1,1,1,1,40,0);
-
-        }
-
-        else if (isDuckDetected && right >=201){
-
-            robot.leftClaw.setPosition(0.25);
-
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-
-
-            robot.rightLift.setPower(-0.5);
-
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(5500);
-
-            robot.rightLift.setPower(0);
-
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
-
-            robot.leftArm.setPower(0.6);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-
-            robot.leftArm.setPower(0);
-
-            gyroReverse(0.5,0.5,0.5,0.5,4,0);
-
-            strafeLeft(0.5,0.5,0.5,0.5,40,0);
-
-            gyroReverse(1,1,1,1,40,0);
-
-        }
-
-        else if (!isDuckDetected){
-
-            robot.leftClaw.setPosition(0.25);
-
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-
-            strafeRight(0.5,0.5,0.5,0.5,49,0);
-
-
-            robot.rightLift.setPower(-0.5);
-
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
-            sleep(7200);
 
             robot.rightLift.setPower(0);
 
@@ -381,7 +291,97 @@ public class RedBackVision extends LinearOpMode {
 
             strafeLeft(0.5,0.5,0.5,0.5,40,0);
 
-            gyroReverse(1,1,1,1,40,0);
+            gyroReverse(1,1,1,1,50,0);
+
+        }
+
+        else if (isDuckDetected && right >=223){
+
+            robot.leftClaw.setPosition(0.25);
+
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+
+            strafeRight(0.5,0.5,0.5,0.5,52,0);
+
+
+            robot.rightLift.setPower(-0.5);
+
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(5500);
+
+            robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,7,0);
+
+            robot.leftArm.setPower(0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(2000);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+
+            robot.leftArm.setPower(0);
+
+            gyroReverse(0.5,0.5,0.5,0.5,4,0);
+
+            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+
+            gyroReverse(1,1,1,1,50,0);
+
+        }
+
+        else if (!isDuckDetected){
+
+            robot.leftClaw.setPosition(0.25);
+
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+
+            strafeRight(0.5,0.5,0.5,0.5,48,0);
+
+
+            robot.rightLift.setPower(-0.5);
+
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(7200);
+
+            robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,8.5,0);
+
+            robot.leftArm.setPower(0.6);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+            sleep(2000);
+
+            robot.leftFront.setPower(0);
+            robot.rightFront.setPower(0);
+            robot.leftRear.setPower(0);
+            robot.rightRear.setPower(0);
+
+            robot.leftArm.setPower(0);
+
+            gyroReverse(0.5,0.5,0.5,0.5,4,0);
+
+            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+
+            gyroReverse(1,1,1,1,50,0);
 
         }
 
@@ -1185,7 +1185,7 @@ public class RedBackVision extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-        tfodParameters.minResultConfidence = 0.8f;
+        tfodParameters.minResultConfidence = 0.7f;
         tfodParameters.isModelTensorFlow2 = true;
         tfodParameters.inputSize = 320;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);

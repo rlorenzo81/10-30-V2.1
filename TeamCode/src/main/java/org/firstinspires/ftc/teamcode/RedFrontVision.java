@@ -287,6 +287,7 @@ robot.leftClaw.setPosition(0.25);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(2000);
 
             robot.leftFront.setPower(0);
@@ -296,6 +297,7 @@ robot.leftClaw.setPosition(0.25);
 
             robot.leftArm.setPower(0);
 
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
             strafeRight(0.5,0.5,0.5,0.5,40,0);
 
@@ -352,6 +354,7 @@ robot.leftClaw.setPosition(0.25);
 
             robot.leftArm.setPower(0);
 
+            gyroReverse(0.5,0.5,0.5,0.5,30,0);
 
             strafeRight(0.5,0.5,0.5,0.5,40,0);
 

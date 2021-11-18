@@ -265,12 +265,10 @@ public class BlueFrontVision2 extends LinearOpMode {
             }
         }
 
-        if(isDuckDetected && right <= 201){
+        if(isDuckDetected && right <= 223){
             //if duck is in position 1
 
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,51,0);
-            gyroDrive(0.5,0.5,0.5,0.5,4,0);
+            strafeRight(0.5,0.5,0.5,0.5,49,0);
 
 
             robot.rightLift.setPower(-0.5);
@@ -280,8 +278,11 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
-            sleep(2000);
+            sleep(2200);
+
             robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -289,17 +290,21 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(2000);
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             robot.leftArm.setPower(0);
 
             gyroReverse(0.5,0.5,0.5,0.5,30,0);
-            strafeLeft(0.5,0.5,0.5,0.5,30,0);
-            strafeLeft(0.5,0.5,0.5,0.5,15,-45);
+
+            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+
+            strafeLeft(0.2,0.2,0.2,0.2,8.5,0);
 
             robot.rightDrive.setPower(-0.6);
 
@@ -307,19 +312,22 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,26,0);
+            strafeRight(0.5,0.5,0.5,0.5,28.5,0);
+
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
+
+            gyroReverse(0.2,0.2,0.2,0.2,1.5,0);
 
         }
 
-        else if (isDuckDetected && right >=201){
+        else if (isDuckDetected && right >=223){
 
             //if duck is in position 2
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-            gyroDrive(0.5,0.5,0.5,0.5,7,0);
+
+            strafeRight(0.5,0.5,0.5,0.5,49,0);
 
 
             robot.rightLift.setPower(-0.5);
@@ -329,8 +337,12 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(5500);
+
             robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -338,6 +350,7 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(2000);
 
             robot.leftFront.setPower(0);
@@ -347,8 +360,10 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.leftArm.setPower(0);
 
             gyroReverse(0.5,0.5,0.5,0.5,30,0);
-            strafeLeft(0.5,0.5,0.5,0.5,30,0);
-            strafeLeft(0.5,0.5,0.5,0.5,15,-45);
+
+            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+
+            strafeLeft(0.2,0.2,0.2,0.2,8.5,0);
 
             robot.rightDrive.setPower(-0.6);
 
@@ -356,30 +371,34 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,24,0);
+            strafeRight(0.5,0.5,0.5,0.5,28.5,0);
+
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
+
+            gyroReverse(0.2,0.2,0.2,0.2,1.5,0);
         }
 
         else if (!isDuckDetected){
 
             //duck is in position 3
 
-            gyroReverse(0.5,0.5,0.5,0.5,2,0);
-            strafeRight(0.5,0.5,0.5,0.5,52,0);
-            gyroDrive(0.5,0.5,0.5,0.5,5,0);
-
+            strafeRight(0.5,0.5,0.5,0.5,49,0);
 
             robot.rightLift.setPower(-0.6);
-
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
-            sleep(5000);
+
+            sleep(7200);
+
             robot.rightLift.setPower(0);
+
+            gyroDrive(0.5,0.5,0.5,0.5,6,0);
 
             robot.leftArm.setPower(0.6);
 
@@ -387,26 +406,36 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(2000);
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             robot.leftArm.setPower(0);
 
             gyroReverse(0.5,0.5,0.5,0.5,30,0);
-            strafeLeft(0.5,0.5,0.5,0.5,30,0);
-            strafeLeft(0.5,0.5,0.5,0.5,15,-45);
+
+            strafeLeft(0.5,0.5,0.5,0.5,40,0);
+
+            strafeLeft(0.2,0.2,0.2,0.2,8.5,0);
+
             robot.rightDrive.setPower(-0.6);
 
             robot.leftFront.setPower(0);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,22,0);
+            strafeRight(0.5,0.5,0.5,0.5,28.5,0);
+
+            gyroReverse(0.5,0.5,0.5,0.5,2,0);
+
+            gyroReverse(0.2,0.2,0.2,0.2,1.5,0);
 
         }
 
