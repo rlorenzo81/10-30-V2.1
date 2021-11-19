@@ -69,7 +69,7 @@ import java.util.Locale;
  */
 
 @Autonomous(name="Red Front", group="Pushbot")
-//@Disabled
+@Disabled
 public class RedAutoFront extends LinearOpMode {
 
     /* Declare OpMode members. */

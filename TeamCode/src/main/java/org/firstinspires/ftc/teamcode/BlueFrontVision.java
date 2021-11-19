@@ -76,8 +76,7 @@ import java.util.Locale;
  */
 
 @Autonomous(name="Blue front vision", group="Pushbot")
-//@Disabled
-//@Disabled
+@Disabled
 public class BlueFrontVision extends LinearOpMode {
 
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
