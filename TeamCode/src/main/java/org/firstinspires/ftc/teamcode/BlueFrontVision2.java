@@ -232,7 +232,7 @@ public class BlueFrontVision2 extends LinearOpMode {
         imu.initialize(parameters);
 
         runtime.reset();
-        while (opModeIsActive()&& runtime.seconds()<30){
+        while (opModeIsActive()&& runtime.seconds()<5){
             if (tfod != null) {
                 // getUpdatedRecognitions() will return null if no new information is available since
                 // the last time that call was made.
@@ -278,6 +278,7 @@ public class BlueFrontVision2 extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
+
             sleep(2200);
 
             robot.rightLift.setPower(0);
@@ -315,7 +316,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,28.5,0);
+            strafeRight(0.5,0.5,0.5,0.5,30,0);
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
@@ -374,7 +375,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,28.5,0);
+            strafeRight(0.5,0.5,0.5,0.5,30,0);
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
@@ -431,7 +432,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             sleep(3000);
 
-            strafeRight(0.5,0.5,0.5,0.5,28.5,0);
+            strafeRight(0.5,0.5,0.5,0.5,30,0);
 
             gyroReverse(0.5,0.5,0.5,0.5,2,0);
 
