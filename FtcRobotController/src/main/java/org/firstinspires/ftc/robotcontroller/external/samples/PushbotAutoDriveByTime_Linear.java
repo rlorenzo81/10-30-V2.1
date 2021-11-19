@@ -60,12 +60,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */
-    HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
-    private ElapsedTime     runtime = new ElapsedTime();
+    HardwarePushbot robot = new HardwarePushbot();   // Use a Pushbot's hardware
+    private ElapsedTime runtime = new ElapsedTime();
 
 
-    static final double     FORWARD_SPEED = 0.6;
-    static final double     TURN_SPEED    = 0.5;
+    static final double FORWARD_SPEED = 0.6;
+    static final double TURN_SPEED = 0.5;
 
     @Override
     public void runOpMode() {
@@ -83,47 +83,43 @@ public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
+      driveForward(2.6, 0.6);
 
-        // Step 1:  Drive forward for 3 seconds
+      turnRobot(0.45, -0.5,0.5);
 
+      turnRobot(1,0.8, 0.3 );
+
+
+
+
+
+    }
+    public void turnRobot(double timeToTurn, double motorSpeedRight, double motorSpeedLeft){
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
+        while(opModeIsActive() && runtime.seconds() <timeToTurn)
+        {
+
+            robot.leftDrive.setPower(motorSpeedLeft);
+            robot.rightDrive.setPower(motorSpeedRight);
+
         }
-
-
         robot.leftDrive.setPower(0);
         robot.rightDrive.setPower(0);
         sleep(250);
-
-        // Step 2:  Spin right for 1.3 seconds
-        robot.leftDrive.setPower(TURN_SPEED);
-        robot.rightDrive.setPower(-TURN_SPEED);
+    }
+    // Step 1:  Drive forward for 3 seconds
+    public void driveForward(double timeToRun, double motorSpeed ) {
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        // Step 3:  Drive Backwards for 1 Second
-        robot.leftDrive.setPower(-FORWARD_SPEED);
-        robot.rightDrive.setPower(-FORWARD_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        // Step 4:  Stop and close the claw.
+        while(opModeIsActive() && runtime.seconds() <timeToRun)
+    {
+        robot.leftDrive.setPower(motorSpeed);
+        robot.rightDrive.setPower(motorSpeed);
+    }
         robot.leftDrive.setPower(0);
         robot.rightDrive.setPower(0);
-        robot.leftClaw.setPosition(1.0);
-        robot.rightClaw.setPosition(0.0);
+    sleep(250);
 
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
-    }
+}
+
+
 }

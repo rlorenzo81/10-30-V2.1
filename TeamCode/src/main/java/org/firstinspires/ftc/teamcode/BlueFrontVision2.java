@@ -232,7 +232,7 @@ public class BlueFrontVision2 extends LinearOpMode {
         imu.initialize(parameters);
 
         runtime.reset();
-        while (opModeIsActive()&& runtime.seconds()<5){
+        while (opModeIsActive()&& runtime.seconds()<30){
             if (tfod != null) {
                 // getUpdatedRecognitions() will return null if no new information is available since
                 // the last time that call was made.
