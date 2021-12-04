@@ -264,14 +264,11 @@ public class BlueBackVision extends LinearOpMode {
 
         if (isDuckDetected && right >= 325) {
 
-            robot.leftClaw.setPosition(0.25);
-
             gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
             strafeLeft(0.5, 0.5, 0.5, 0.5, 41, 0);
 
             strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
-
 
             gyroDrive(0, 0, 0, 0, 0, 0);
 
@@ -309,8 +306,6 @@ public class BlueBackVision extends LinearOpMode {
 
 
         } else if (isDuckDetected && right <= 325) {
-
-            robot.leftClaw.setPosition(0.25);
 
             gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
@@ -355,8 +350,6 @@ public class BlueBackVision extends LinearOpMode {
         }
 
         else if(!isDuckDetected){
-
-        robot.leftClaw.setPosition(0.25);
 
         gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 

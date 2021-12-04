@@ -277,7 +277,7 @@ robot.leftClaw.setPosition(0.25);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0.3,0.3,0.3,0.3,6,0);
 
             sleep(1000);
 
@@ -335,7 +335,7 @@ robot.leftClaw.setPosition(0.25);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0.3,0.3,0.3,0.3,6,0);
 
             sleep(1000);
 

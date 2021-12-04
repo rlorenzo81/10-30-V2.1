@@ -286,7 +286,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,10,0);
+            gyroDrive(0.3,0.3,0.3,0.3,10,0);
 
             gyroDrive(0.2,0.2,0.2,0.2,1,0);
 
@@ -307,7 +307,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             strafeLeft(0.5,0.5,0.5,0.5,40,0);
 
-            strafeLeft(0.2,0.2,0.2,0.2,5,0);
+            strafeLeft(0.2,0.2,0.2,0.2,6,0);
 
 
             robot.rightDrive.setPower(-0.6);
@@ -348,7 +348,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0.3,0.3,0.3,0.3,6,0);
 
             gyroDrive(0.2,0.2,0.2,0.2,1,0);
 
@@ -371,7 +371,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             strafeLeft(0.5,0.5,0.5,0.5,40,0);
 
-            strafeLeft(0.2,0.2,0.2,0.2,6,0);
+            strafeLeft(0.2,0.2,0.2,0.2,7,0);
 
             robot.rightDrive.setPower(-0.6);
 
@@ -408,7 +408,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0.3,0.3,0.3,0.3,6,0);
 
             gyroDrive(0.2,0.2,0.2,0.2,1,0);
 
@@ -432,7 +432,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             strafeLeft(0.5,0.5,0.5,0.5,43,0);
 
-            strafeLeft(0.2,0.2,0.2,0.2,6,0);
+            strafeLeft(0.2,0.2,0.2,0.2,7,0);
 
             robot.rightDrive.setPower(-0.6);
 
