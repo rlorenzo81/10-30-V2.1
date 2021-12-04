@@ -371,7 +371,7 @@ public class BlueFrontVision2 extends LinearOpMode {
 
             strafeLeft(0.5,0.5,0.5,0.5,40,0);
 
-            strafeLeft(0.2,0.2,0.2,0.2,8,0);
+            strafeLeft(0.2,0.2,0.2,0.2,6,0);
 
             robot.rightDrive.setPower(-0.6);
 
