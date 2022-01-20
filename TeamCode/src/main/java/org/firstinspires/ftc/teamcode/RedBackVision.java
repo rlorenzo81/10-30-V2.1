@@ -356,11 +356,11 @@ public class RedBackVision extends LinearOpMode {
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
-            sleep(7200);
+            sleep(8100);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.3,0.3,0.3,0.3,8.5,0);
+            gyroDrive(0.3,0.3,0.3,0.3,11,0);
 
             robot.leftArm.setPower(0.6);
 

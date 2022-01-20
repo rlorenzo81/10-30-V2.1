@@ -277,7 +277,11 @@ robot.leftClaw.setPosition(0.25);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.3,0.3,0.3,0.3,6,0);
+            sleep(500);
+
+            gyroDrive(0.3,0.3,0.3,0.3,8,0);
+
+            gyroDrive(0,0,0,0,0,0);
 
             sleep(1000);
 
@@ -331,11 +335,15 @@ robot.leftClaw.setPosition(0.25);
             robot.rightFront.setPower(0);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
-            sleep(7200);
+            sleep(8100);
 
             robot.rightLift.setPower(0);
 
-            gyroDrive(0.3,0.3,0.3,0.3,6,0);
+            sleep(500);
+
+            gyroDrive(0.3,0.3,0.3,0.3,10,0);
+
+            gyroDrive(0,0,0,0,0,0);
 
             sleep(1000);
 
@@ -354,9 +362,9 @@ robot.leftClaw.setPosition(0.25);
 
             robot.leftArm.setPower(0);
 
-            gyroReverse(0.5,0.5,0.5,0.5,30,0);
+            gyroReverse(0.5,0.5,0.5,0.5,32,0);
 
-            strafeRight(0.5,0.5,0.5,0.5,40,0);
+            strafeRight(0.5,0.5,0.5,0.5,42,0);
 
             strafeRight(0.3,0.3,0.3,0.3,6,0);
 
@@ -393,9 +401,13 @@ robot.leftClaw.setPosition(0.25);
 
             robot.rightLift.setPower(0);
 
-            sleep(1000);
+            sleep(500);
 
-            gyroDrive(0.5,0.5,0.5,0.5,6,0);
+            gyroDrive(0.5,0.5,0.5,0.5,7,0);
+
+            gyroDrive(0,0,0,0,0,0);
+
+            sleep(1000);
 
             robot.leftArm.setPower(0.5);
 
@@ -404,11 +416,6 @@ robot.leftClaw.setPosition(0.25);
             robot.leftRear.setPower(0);
             robot.rightRear.setPower(0);
             sleep(2000);
-
-            robot.leftFront.setPower(0);
-            robot.rightFront.setPower(0);
-            robot.leftRear.setPower(0);
-            robot.rightRear.setPower(0);
 
             robot.leftArm.setPower(0);
 
@@ -420,7 +427,6 @@ robot.leftClaw.setPosition(0.25);
 
             strafeRight(0,0,0,0,0,0);
 
-
             robot.rightDrive.setPower(0.6);
 
             sleep(2500);
@@ -429,7 +435,8 @@ robot.leftClaw.setPosition(0.25);
 
             gyroReverse(0.5,0.5,0.5,0.5,3,0);
 
-          //  gyroDrive(1,1,1,1,60,0);
+            gyroDrive(0,0,0,0,0,0);
+
 
         }
 
