@@ -262,9 +262,7 @@ public class BlueBackVision extends LinearOpMode {
 
         tfod.shutdown();
 
-        if (isDuckDetected && right >= 325) {
-
-            robot.leftClaw.setPosition(0.25);
+        if (isDuckDetected && right >= 201) {
 
             gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
@@ -272,17 +270,14 @@ public class BlueBackVision extends LinearOpMode {
 
             strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
 
-
             gyroDrive(0, 0, 0, 0, 0, 0);
 
-            runtime.reset();
-            while (opModeIsActive() && runtime.seconds() < 8.5) {
-                robot.rightLift.setPower(-0.5);
+            robot.rightLift.setPower(-0.5);
 
-
-            }
+            sleep(7200);
 
             robot.rightLift.setPower(0);
+
             sleep(100);
 
             gyroDrive(0, 0, 0, 0, 0, 0);
@@ -308,9 +303,7 @@ public class BlueBackVision extends LinearOpMode {
             gyroReverse(1, 1, 1, 1, 60, 0);
 
 
-        } else if (isDuckDetected && right <= 325) {
-
-            robot.leftClaw.setPosition(0.25);
+        } else if (isDuckDetected && right <= 201) {
 
             gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
@@ -318,17 +311,14 @@ public class BlueBackVision extends LinearOpMode {
 
             strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
 
-
             gyroDrive(0, 0, 0, 0, 0, 0);
 
-            runtime.reset();
-            while (opModeIsActive() && runtime.seconds() < 6.5) {
-                robot.rightLift.setPower(-0.5);
+            robot.rightLift.setPower(-0.5);
 
-
-            }
+            sleep(5500);
 
             robot.rightLift.setPower(0);
+
             sleep(100);
 
             gyroDrive(0, 0, 0, 0, 0, 0);
@@ -356,25 +346,20 @@ public class BlueBackVision extends LinearOpMode {
 
         else if(!isDuckDetected){
 
-        robot.leftClaw.setPosition(0.25);
-
         gyroReverse(0.5, 0.5, 0.5, 0.5, 2, 0);
 
         strafeLeft(0.5, 0.5, 0.5, 0.5, 41, 0);
 
         strafeLeft(0.2, 0.2, 0.2, 0.2, 14, 0);
 
-
         gyroDrive(0, 0, 0, 0, 0, 0);
 
-        runtime.reset();
-        while (opModeIsActive() && runtime.seconds() < 3) {
-            robot.rightLift.setPower(-0.5);
+        robot.rightLift.setPower(-0.5);
 
-
-        }
+        sleep(2000);
 
         robot.rightLift.setPower(0);
+
         sleep(100);
 
         gyroDrive(0, 0, 0, 0, 0, 0);
