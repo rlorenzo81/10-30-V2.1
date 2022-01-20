@@ -229,7 +229,7 @@ else if(gamepad2.right_bumper){
 
         else if (gamepad2.right_trigger==1){
           //  robot.rightClaw.setPosition(0.1);
-            robot.leftClaw.setPosition(0.6);
+            robot.leftClaw.setPosition(0.55);
 
         } //right bumper closes claw
 
